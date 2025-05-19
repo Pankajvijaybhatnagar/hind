@@ -577,12 +577,12 @@ const services = [
 const courseDataArray = [
   {
     id: 0,
-    imgSrc: "images/courses_img_1.jpg",
+    imgSrc: "/images/c1.png",
     color: "orange",
     slug: "development-theory-learn",
     title: "Development Theory Learn",
     category: "Drawing",
-    price: "$50.00",
+    price: "50.00",
     instructor: "Smith John",
     lessons: "14 lessons",
     description: "Learn about development theory in this comprehensive course.",
@@ -594,7 +594,7 @@ const courseDataArray = [
   },
   {
     id: 1,
-    imgSrc: "images/courses_img_2.jpg",
+    imgSrc: "/images/c1.png",
     color: "green",
     slug: "learn-photography",
     title: "Learn Photography",
@@ -611,7 +611,7 @@ const courseDataArray = [
   },
   {
     id: 2,
-    imgSrc: "images/courses_img_3.jpg",
+    imgSrc: "/images/c1.png",
     color: "red",
     slug: "advance-wordpress",
     title: "Advance WordPress",
@@ -629,7 +629,7 @@ const courseDataArray = [
   },
   {
     id: 3,
-    imgSrc: "images/courses_img_4.jpg",
+    imgSrc: "/images/c1.png",
     color: "blue",
     slug: "the-complete-financial-analyst",
     title: "The Complete Financial Analyst",
@@ -647,7 +647,7 @@ const courseDataArray = [
   },
   {
     id: 4,
-    imgSrc: "images/courses_img_5.jpg",
+    imgSrc: "/images/c1.png",
     color: "orange",
     slug: "digital-marketing-mastery",
     title: "Digital Marketing Mastery",
@@ -665,7 +665,7 @@ const courseDataArray = [
   },
   {
     id: 5,
-    imgSrc: "images/courses_img_6.jpg",
+    imgSrc: "/images/c1.png",
     color: "green",
     slug: "data-science-fundamentals",
     title: "Data Science Fundamentals",
@@ -683,7 +683,7 @@ const courseDataArray = [
   },
   {
     id: 6,
-    imgSrc: "images/courses_img_7.jpg",
+    imgSrc: "/images/c1.png",
     color: "red",
     slug: "web-development-bootcamp",
     title: "Web Development Bootcamp",

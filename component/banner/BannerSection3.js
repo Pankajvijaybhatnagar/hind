@@ -10,12 +10,12 @@ const BannerSection3 = () => {
       <div className="container">
         <div className="row">
           <div className="col-xl-8 col-md-10 col-lg-8">
-            <div className="tf__banner_text wow fadeInUp">
+            <div className="tf__banner_text wow fadeInUp bg-[rgba(0,0,0,0.5)] ">
               <h5>Welcome to Hindustan Council of Secondary Education!</h5>
-              <h1>
-                We Provide the Best <span>Online</span> Secondary Education.
+              <h1 className="text-white">
+                We Provide the Best <span></span> Secondary Education.
               </h1>
-              <p>
+              <p className="text-white">
                 Our council is committed to delivering high-quality secondary education through
                 well-designed courses and a dedicated team of educators.
               </p>

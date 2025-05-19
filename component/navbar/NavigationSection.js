@@ -36,12 +36,15 @@ const NavigationSection = ({ position, btnPosition, navRef }) => {
           <Navlink href="/">courses</Navlink>
         </li>
         <li className="nav-item">
-          <Navlink href="/">blog</Navlink>
+          <Navlink href="/">Verify Certificate</Navlink>
         </li>
         <li className="nav-item">
-          <a className="nav-link">
+          <Navlink href="/">Contact us</Navlink>
+        </li>
+        <li className="nav-item">
+          {/* <a className="nav-link">
             pages <i className="fa fa-angle-down"></i>
-          </a>
+          </a> */}
           {/* <ul className="tf__droap_menu">
             <li>
               <SubNavlink href="/courses/development-theory-learn">
@@ -86,22 +89,22 @@ const NavigationSection = ({ position, btnPosition, navRef }) => {
             </li>
           </ul> */}
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Navlink href="/">contact</Navlink>
-        </li>
-        {btnPosition ? null : (
+        </li> */}
+        {/* {btnPosition ? null : (
           <li className="nav-item">
             <a className="nav-link common_btn" href="#">
               LEARN MORE
             </a>
           </li>
-        )}
+        )} */}
       </ul>
-      {btnPosition ? (
+      {/* {btnPosition ? (
         <a className="common_btn_2 ms-auto" href="#">
           learn more
         </a>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

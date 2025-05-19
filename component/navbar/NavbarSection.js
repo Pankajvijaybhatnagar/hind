@@ -3,6 +3,7 @@ import { useEduorContext } from "@/context/EduorContext";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import NavigationSection from "./NavigationSection";
+import Image from "next/image";
 
 const NavbarSection = ({ style, logo }) => {
   const {
@@ -43,7 +44,14 @@ const NavbarSection = ({ style, logo }) => {
     >
       <div className="container">
         <Link className="navbar-brand" href="/">
-          <img src={logo} alt="Eduor" className="img-fluid w-100" />
+        <Image
+        src={logo}
+        alt="Eduor"
+        height={70}
+        width={70}
+        className="img-fluid"
+      />
+         
         </Link>
         {isMobileNavOpen ? (
           <button

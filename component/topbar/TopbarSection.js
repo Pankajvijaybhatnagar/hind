@@ -23,15 +23,8 @@ const TopbarSection = ({ style }) => {
               <ul className="d-flex flex-wrap justify-content-end">
                 <li><a href="/login">Login</a></li>
                 <li><a href="/help">Support</a></li>
-                <li className="tf__language_dropdown">
-                  <a href="#"><img src="images/language_3.jpg" alt="language" /> English</a>
-                  <ul className="tf__other_language">
-                    <li><a href="#"><img src="images/language_2.jpg" alt="language" /> Hindi </a></li>
-                    <li><a href="#"><img src="images/language_1.jpg" alt="language" /> Bengali</a></li>
-                    <li><a href="#"><img src="images/language_1.jpg" alt="language" /> Tamil</a></li>
-                    <li><a href="#"><img src="images/language_1.jpg" alt="language" /> Telugu</a></li>
-                  </ul>
-                </li>
+                <li><a href="/help">Verify Student</a></li>
+                
               </ul>
             </div>
           </div>

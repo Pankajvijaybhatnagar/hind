@@ -101,8 +101,8 @@ const FooterSection2 = ({ style, logo }) => {
                   <div className="tf__copyright">
                     <p>Copyright © {new Date().getFullYear()} Hindustan Council of Secondary Education. All rights reserved.</p>
                     <ul className="d-flex flex-wrap">
-                      <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                      <li><Link href="/terms">Terms & Conditions</Link></li>
+                      <li><Link href="/">Privacy Policy</Link></li>
+                      <li><Link href="/">Terms & Conditions</Link></li>
                     </ul>
                   </div>
                 </div>
