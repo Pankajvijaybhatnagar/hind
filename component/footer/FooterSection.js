@@ -11,7 +11,7 @@ const FooterSection = () => {
               <div className="tf__footer_logo_area">
                 <Link className="footer_logo" href="/">
                   <img
-                    src="/images/footer_logo.png"
+                    src="/images/logo3.png"
                     alt="Eduor"
                     className="img-fluid w-100"
                   />

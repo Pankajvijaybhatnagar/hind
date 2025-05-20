@@ -47,8 +47,8 @@ const NavbarSection = ({ style, logo }) => {
         <Image
         src={logo}
         alt="Eduor"
-        height={70}
-        width={70}
+        height={60}
+        width={60}
         className="img-fluid"
       />
          

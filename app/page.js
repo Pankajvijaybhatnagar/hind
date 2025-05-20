@@ -22,7 +22,7 @@ export default function Home3() {
   return (
     <div className="home_3">
       <TopbarSection style="tf__topbar tf__topbar_2" />
-      <NavbarSection style="main_menu_3" logo="/images/logo3.png" logoStyle={{ height: "60px" }}  />
+      <NavbarSection style="main_menu_3" logo="/images/logo3.png" logoStyle={{ height: "50px" }}  />
       <BannerSection3 />
       <CategorySection3 />
       <AboutSection3 style="about_3" />
