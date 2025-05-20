@@ -36,7 +36,7 @@ const NavigationSection = ({ position, btnPosition, navRef }) => {
           <Navlink href="/">courses</Navlink>
         </li>
         <li className="nav-item">
-          <Navlink href="/">Verify Certificate</Navlink>
+          <Navlink href="/verify-certificate">Verify Certificate</Navlink>
         </li>
         <li className="nav-item">
           <Navlink href="/">Contact us</Navlink>

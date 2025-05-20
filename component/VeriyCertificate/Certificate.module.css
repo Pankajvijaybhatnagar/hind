@@ -1,0 +1,29 @@
+.bgclr{
+background-color: rgb(237, 251, 255);
+padding: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.headerlogo{
+    max-width: 600px;
+    margin: auto;
+}
+.photocontainer{
+    position: relative;
+}
+.photocontainer img{
+    height: 200px !important;
+    width: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    
+}
+.stamp{
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    /* height: 50px !important; */
+    
+}
