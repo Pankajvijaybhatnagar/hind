@@ -12,8 +12,9 @@ align-items: center;
 }
 .photocontainer{
     position: relative;
+    /* border: 1px solid red; */
 }
-.photocontainer img{
+.photocontainer .studentavatar{
     height: 200px !important;
     width: auto;
     aspect-ratio: 1/1;
@@ -24,6 +25,10 @@ align-items: center;
     position: absolute;
     top: 50%;
     right: 50%;
-    /* height: 50px !important; */
+    /* height: 100px !important; */
+    aspect-ratio: 1/1 !important;
+    float: left;
+    
+
     
 }

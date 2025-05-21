@@ -6,12 +6,12 @@ const VerifyCertificateContainer = ({ studentData }) => {
   return (
     <div className={Styles.bgclr}>
       <img className={Styles.headerlogo} src={"/images/logo-2.png"} />
-      <h4>Candidate Certificate Online Verification</h4>
+      <h5 className="my-3">Candidate Certificate Online Verification</h5>
       <div className={Styles.photocontainer}>
-        <img src={studentData.avatar} />
-        <img style={{height:'50px'}} className={Styles.stamp} src={"/images/stamp.png"} />
+        <Image className={Styles.studentavatar} height={200 } width={200} src={studentData.avatar} />
+        <Image height={100} width={100}  className={Styles.stamp} src={"/images/stamp.png"} />
       </div>
-      <table class="table">
+      <table  class="table mt-5 pt-5">
   <thead>
     <tr>
       <th scope="col">#</th>
