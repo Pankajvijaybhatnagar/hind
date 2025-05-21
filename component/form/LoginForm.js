@@ -52,7 +52,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="col-xl-12">
-          <div className="tf__login_imput tf__login_check_area">
+          {/* <div className="tf__login_imput tf__login_check_area">
             <div className="form-check">
               <input
                 className="form-check-input"
@@ -65,7 +65,7 @@ const LoginForm = () => {
               </label>
             </div>
             <a href="#">Forget Password ?</a>
-          </div>
+          </div> */}
         </div>
         <div className="col-xl-12">
           <div className="tf__login_imput">

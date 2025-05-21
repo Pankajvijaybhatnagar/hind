@@ -5,15 +5,15 @@ import Link from "next/link";
 
 const LoginSection = () => {
   return (
-    <section className="tf__login mt_195 xs_mt_95">
+    <section className="tf__login my-3 xs_mt_9">
       <div className="container">
         <div className="row wow fadeInUp">
           <div className="col-xxl-5 col-xl-6 col-md-9 col-lg-7 m-auto">
             <div className="tf__login_area">
-              <h2>Welcome to Eduor!</h2>
+              <h2>Login to HCSE</h2>
               <p>sign in to continue</p>
               <LoginForm />
-              <p className="or">
+              {/* <p className="or">
                 <span>or</span>
               </p>
               <ul className="d-flex">
@@ -41,7 +41,7 @@ const LoginSection = () => {
               <p className="create_account">
                 Dont’t have an aceount ?{" "}
                 <Link href="/sign-up">Create Account</Link>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
