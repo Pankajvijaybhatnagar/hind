@@ -2,8 +2,8 @@ import LoginSection from "@/component/authentication/LoginSection";
 import BreadcrumbSection from "@/component/breadcrumb/BreadcrumbSection";
 import Layout from "@/component/layout/Layout";
 export const metadata = {
-  title: 'Eduor Sign-In Page',
-  description: 'Developed by Azizur Rahman',
+  title: 'HCSE Sign-In / login',
+  description: '',
 }
 export default function SignIn() {
     return (

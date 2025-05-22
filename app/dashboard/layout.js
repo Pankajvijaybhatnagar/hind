@@ -5,8 +5,8 @@ import React from 'react'
 export default function DashboardLayout  ({children})  {
   return (
       <div className='row'>
-          <div style={{ height: '100dvh' }} className='col-2 bg-secondary p-3 text-white' >
-              <Image style={{height:"100px !important", width:"60px"}} width={150} height={200} src={'/images/logo3.png'} />
+          <div style={{ height: '100dvh' }} className='col-2 bg-secondary-subtle ' >
+              
               <Sidebar/>
           </div>
           <div className='col-10 p3'>
