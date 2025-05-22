@@ -1,0 +1,23 @@
+.formContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.formContainer div{
+    flex: 1 0 300px;
+}
+.formContainer div label {
+    margin: 0;
+}
+
+.formContainer button {
+    height: 35px;
+    flex: 1 0 50px;
+    bottom: 0;
+    margin-top: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+}

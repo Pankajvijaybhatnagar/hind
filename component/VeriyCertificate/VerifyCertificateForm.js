@@ -25,11 +25,11 @@ const VerifyCertificateForm = ({certificateId,setCertificateId}) => {
               onChange={handleInputChange}
             />
             <button
-              className="btn btn-outline-secondary"
+              className="btn btn-primary"
               type="submit"
               id="button-addon2"
             >
-              Verify
+              Search
             </button>
           </form>
         </div>
