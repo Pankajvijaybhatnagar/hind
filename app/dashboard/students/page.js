@@ -15,10 +15,13 @@ const page = () => {
           {
               islistShow ?
                   <> 
-                      <button onClick={handleListShow} className='btn btn-primary'>Add new</button>    
+                <button onClick={handleListShow} className='btn btn-primary'>Add new</button>    
                   <StudentsList />
                       </>
-                  : <AddStudentForm/>
+                  : <>
+                  <button onClick={handleListShow} className='btn btn-primary'>All students</button>
+                  <AddStudentForm/>
+                  </>
           }
       
       </>
