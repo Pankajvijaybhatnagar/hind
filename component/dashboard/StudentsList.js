@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Pagination from "@/context/Pagination";
 
 const StudentsList = ({ students }) => {
   return (
@@ -62,6 +63,7 @@ const StudentsList = ({ students }) => {
     ))}
   </tbody>
 </table>
+      
 
     </div>
   );

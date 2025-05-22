@@ -2,6 +2,7 @@
 
 import AddStudentForm from "@/component/dashboard/AddStudentForm";
 import StudentsList from "@/component/dashboard/StudentsList";
+import Pagination from "@/context/Pagination";
 import React, { useState } from "react";
 
 const page = () => {
@@ -60,7 +61,8 @@ const page = () => {
           <button onClick={handleListShow} className="btn btn-primary">
             Add new
           </button>
-          <StudentsList students={students} />
+                  <StudentsList students={students} />
+                  <Pagination/>
         </>
       ) : (
         <>
