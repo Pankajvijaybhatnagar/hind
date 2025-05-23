@@ -7,6 +7,8 @@ import React, { useState } from "react";
 
 const page = () => {
   const [islistShow, setIsListShow] = React.useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(5);
   const [students, setStudents] = useState([
     {
       name: "RAJAN SINGH",
@@ -62,7 +64,7 @@ const page = () => {
             Add new
           </button>
                   <StudentsList students={students} />
-                  <Pagination/>
+                  <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
         </>
       ) : (
         <>
