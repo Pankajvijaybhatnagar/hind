@@ -12,7 +12,7 @@ export default function DashboardLayout  ({children})  {
           <div className='col-10 p3'>
               <h4 className='text-bold text-center pt-3'>Welcome to Admin Panel - HCSE</h4> 
               <hr/>
-              <div style={{ height: '85dvh' }} className='overflow-auto'>
+              <div style={{ height: '85dvh',marginRight:"10px" }} className='overflow-auto pr-2'>
                   {children}
               </div>
           </div>

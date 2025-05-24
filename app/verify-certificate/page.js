@@ -36,13 +36,14 @@ const page = () => {
   return (
     <Layout>
       <BreadcrumbSection
+        className="no-print"
         header="Verify certificate"
         title="Verify certificate"
       />
 
       <div className="tf__verify_certificate">
         <div className="container">
-          <div className="mt-3 py-3">
+          <div className="mt-3 py-3 no-print">
             <VerifyCertificateForm
               certificateId={certificateId}
               setCertificateId={setCertificateId}

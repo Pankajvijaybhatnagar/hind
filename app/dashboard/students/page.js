@@ -7,6 +7,9 @@ import React, { useState } from "react";
 
 const page = () => {
   const [islistShow, setIsListShow] = React.useState(true);
+  const [studentData,setStudentData] = useState({})
+
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(5);
   const [students, setStudents] = useState([
@@ -59,19 +62,30 @@ const page = () => {
   return (
     <>
       {islistShow ? (
-        <>
-          <button onClick={handleListShow} className="btn btn-primary">
-            Add new
-          </button>
-                  <StudentsList students={students} />
-                  <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
-        </>
+        <div>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            Showing {students.length} students
+            <button onClick={handleListShow} className="btn btn-primary">
+              Add new
+            </button>
+          </div>
+          <StudentsList students={students} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
       ) : (
-        <>
+          <>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+            <span className="fs-6 fw-bolder">Adding New Student</span>
+            
           <button onClick={handleListShow} className="btn btn-primary">
             All students
           </button>
-          <AddStudentForm />
+          </div>
+          <AddStudentForm studentData={studentData} setStudentData={setStudentData} />
         </>
       )}
     </>
