@@ -7,7 +7,26 @@ import React, { useState } from "react";
 
 const page = () => {
   const [islistShow, setIsListShow] = React.useState(true);
-  const [studentData,setStudentData] = useState({})
+  const [studentData, setStudentData] = useState({
+    name: '',
+    fatherName: '',
+    motherName: '',
+    dateOfBirth: '',
+    aadharCardNumber: '',
+    enrolmentNumber: '',
+    enrolmentDate: '',
+    courseName: '',
+    courseStatus: '',
+    academicDivision: '',
+    courseDuration: '',
+    totalObtainedMarks: '',
+    overallPercentage: '',
+    grade: '',
+    finalResult: '',
+    certificateIssueDate: '',
+    trainingCentre: '',
+    avatar: null,
+  });
 
 
   const [currentPage, setCurrentPage] = useState(1);
