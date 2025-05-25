@@ -74,23 +74,49 @@ const page = () => {
     },
   ]);
 
+  const handleAddNewStudent = () => {
+    setStudentData({
+      name: '',
+      fatherName: '',
+      motherName: '',
+      dateOfBirth: '',
+      aadharCardNumber: '',
+      enrolmentNumber: '',
+      enrolmentDate: '',
+      courseName: '',
+      courseStatus: '',
+      academicDivision: '',
+      courseDuration: '',
+      totalObtainedMarks: '',
+      overallPercentage: '',
+      grade: '',
+      finalResult: '',
+      certificateIssueDate: '',
+      trainingCentre: '',
+      avatar: null,
+    })
+    setIsListShow(false)
+  }
+
   const handleListShow = () => {
     setIsListShow(!islistShow);
   };
 
-  const handleEditStudent = (student)=> {
+  const handleEditStudent = (student) => {
     setStudentData(student);
     setIsListShow(false);
+    
   }
 
   return (
     <>
+      {/* <button onClick={()=>console.log(studentData)}>cosole</button> */}
       {islistShow ? (
         <div>
           <div className="d-flex justify-content-between align-items-center mb-3">
             Showing {students.length} students
-            <button onClick={handleListShow} className="btn btn-primary">
-              Add new
+            <button onClick={handleAddNewStudent} className="btn btn-primary btn-sm">
+              Add new student
             </button>
           </div>
           <StudentsList students={students} handleEditStudent={handleEditStudent} />

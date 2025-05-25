@@ -1,5 +1,6 @@
 "use client";
 import { useEduorContext } from "@/context/EduorContext";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -8,22 +9,26 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter();
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     if (!password || !email) {
-      toast.error("Please fill out all fields.", { position: "top-right" });
+      toast.error("Please fill out all fields.");
     } else if (!isValidEmail(email)) {
-      toast.warning("Please provide a valid email address.", {
-        position: "top-right",
-      });
+      toast.warning("Please provide a valid email address.");
     } else {
       // If the form is successfully submitted, show a success toast
-      toast.success("Logged In successfully!", {
-        position: "top-right",
-      });
-      setPassword("");
-      setEmail("");
+      if( email === "hcseindia14@gmail.com" && password === "admin@101") {
+        localStorage.setItem("token", `${email}:${password}`); // Replace with actual token logic
+        toast.success("Logged In successfully!");
+        setPassword("");
+        setEmail("");
+        router.push("/dashboard"); 
+      } else {
+        toast.error("Invalid email or password.");
+      }
     }
   };
   return (

@@ -4,6 +4,14 @@ import LoginForm from "../form/LoginForm";
 import Link from "next/link";
 
 const LoginSection = () => {
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Handle login logic here
+    // For example, you can call an API to authenticate the user
+    console.log("Login form submitted");
+  }
+
   return (
     <section className="tf__login my-3 xs_mt_9">
       <div className="container">
@@ -12,7 +20,7 @@ const LoginSection = () => {
             <div className="tf__login_area">
               <h2>Login to HCSE</h2>
               <p>sign in to continue</p>
-              <LoginForm />
+              <LoginForm onSubmit={handleLogin} />
               {/* <p className="or">
                 <span>or</span>
               </p>

@@ -60,9 +60,9 @@ const StudentsList = ({ students,handleEditStudent }) => {
               <td>{student.finalResult}</td> */}
               <td>{student.certificateIssueDate}</td>
               <td>
-                
+
+                <button onClick={() => handleEditStudent(student)} className="btn btn-success btn-sm me-1">
                   <i className="fa fa-edit"></i>
-                <button  className="btn btn-success btn-sm me-1">
                 </button>
                 <button className="btn btn-danger btn-sm">
                   <i className="fa fa-trash"></i>
