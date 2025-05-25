@@ -78,6 +78,11 @@ const page = () => {
     setIsListShow(!islistShow);
   };
 
+  const handleEditStudent = (student)=> {
+    setStudentData(student);
+    setIsListShow(false);
+  }
+
   return (
     <>
       {islistShow ? (
@@ -88,7 +93,7 @@ const page = () => {
               Add new
             </button>
           </div>
-          <StudentsList students={students} />
+          <StudentsList students={students} handleEditStudent={handleEditStudent} />
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

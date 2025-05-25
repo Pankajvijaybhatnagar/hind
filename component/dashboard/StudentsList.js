@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Pagination from "@/context/Pagination";
 
-const StudentsList = ({ students }) => {
+const StudentsList = ({ students,handleEditStudent }) => {
   return (
     <div>
       <table style={{fontSize: '0.85rem'}} className="table table-hover table-border table-sm table-responsive text-sm">
@@ -61,8 +61,8 @@ const StudentsList = ({ students }) => {
               <td>{student.certificateIssueDate}</td>
               <td>
                 
-                <button className="btn btn-success btn-sm me-1">
                   <i className="fa fa-edit"></i>
+                <button  className="btn btn-success btn-sm me-1">
                 </button>
                 <button className="btn btn-danger btn-sm">
                   <i className="fa fa-trash"></i>

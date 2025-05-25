@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const TopbarSection = ({ style }) => {
@@ -21,10 +22,10 @@ const TopbarSection = ({ style }) => {
           <div className="col-xl-6 col-md-6">
             <div className="tf__topbar_right">
               <ul className="d-flex flex-wrap justify-content-end">
-                <li><a href="/login">Login</a></li>
-                <li><a href="/help">Support</a></li>
-                <li><a href="/help">Verify Student</a></li>
-                
+                <li><Link href="/dashboard">Login</Link></li>
+                <li><Link href="/help">Support</Link></li>
+                <li><Link href="/verify-certificate">Verify Student</Link></li>
+
               </ul>
             </div>
           </div>
