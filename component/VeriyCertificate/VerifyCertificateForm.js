@@ -1,13 +1,15 @@
 import React from 'react'
 
-const VerifyCertificateForm = ({certificateId,setCertificateId}) => {
+const VerifyCertificateForm = ({certificateId,setCertificateId,getCertificate}) => {
   const handleInputChange = (event) => {
     setCertificateId(event.target.value);
   };
     const handleSubmit = (event) => {
         event.preventDefault();
         // Add your form submission logic here
-        console.log("Certificate ID submitted:", certificateId);
+      console.log("Certificate ID submitted:", certificateId);
+      getCertificate(certificateId);
+      
     };      
     return (
       <div class="card">
