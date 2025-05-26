@@ -1,5 +1,6 @@
 "use client";
 import { useEduorContext } from "@/context/EduorContext";
+import conf from "@/lib/config";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -8,10 +9,11 @@ const LoginForm = () => {
   const { isValidEmail } = useEduorContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const router = useRouter();
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (!password || !email) {
@@ -20,15 +22,25 @@ const LoginForm = () => {
       toast.warning("Please provide a valid email address.");
     } else {
       // If the form is successfully submitted, show a success toast
-      if( email === "hcseindia14@gmail.com" && password === "admin@101") {
-        localStorage.setItem("token", `${email}:${password}`); // Replace with actual token logic
-        toast.success("Logged In successfully!");
-        setPassword("");
-        setEmail("");
-        router.push("/dashboard"); 
-      } else {
-        toast.error("Invalid email or password.");
-      }
+
+      const response = await fetch(`${conf.apiBaseUri}/login`, {
+        method:"POST",
+        body: JSON.stringify({
+          email,password
+        })
+      })
+      console.log(response)
+
+
+      // if( email === "hcseindia14@gmail.com" && password === "admin@101") {
+      //   localStorage.setItem("token", `${email}:${password}`); // Replace with actual token logic
+      //   toast.success("Logged In successfully!");
+      //   setPassword("");
+      //   setEmail("");
+      //   router.push("/dashboard"); 
+      // } else {
+      //   toast.error("Invalid email or password.");
+      // }
     }
   };
   return (
