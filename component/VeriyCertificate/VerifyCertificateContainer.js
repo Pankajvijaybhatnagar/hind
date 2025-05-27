@@ -29,7 +29,7 @@ const VerifyCertificateContainer = ({ studentData }) => {
         <img className={Styles.headerlogo} src={"/images/logo-2.png"} />
         <h5 className="my-3">Candidate Certificate Online Verification</h5>
         <div className={Styles.photocontainer}>
-          <Image
+          <img
             className={Styles.studentavatar}
             height={200}
             width={200}

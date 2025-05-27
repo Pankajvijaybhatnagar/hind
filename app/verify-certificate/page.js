@@ -17,6 +17,8 @@ const page = () => {
 
   const getCertificate = async (enrollmentNo = null) => {
     try {
+      setLoading(true);
+      setError(false);
       const response = await fetch(
         `${conf.apiBaseUri}/certificate?e=${enrollmentNo}`, 
         {
@@ -28,12 +30,32 @@ const page = () => {
       );
       const data = await response.json();
       console.log(data.student)
+
+      if(data.error) {
+        setError(data.error);
+        setIsStudent(false);
+        setStudentData({});
+        setLoading(false);
+        return;
+      }
       
       if (data.student) {
         setStudentData(data.student);
         setIsStudent(true)
+      } else {
+        setIsStudent(false);
+        setStudentData({});
+        setLoading(false);
       }
-    } catch (error) {}
+      setLoading(false);
+
+    } catch (error) {
+      console.error("Error fetching certificate:", error);
+      setError("Failed to fetch certificate. Please try again later.");
+      setLoading(false);
+      setIsStudent(false);
+      setStudentData({});
+    }
   };
 
   // useEffect(()=>{},[])
@@ -58,6 +80,16 @@ const page = () => {
           {isStudent  && (
             <div className="mt-3 py-3">
               <VerifyCertificateContainer studentData={studentData} />
+            </div>
+          )}
+          {error && (
+            <div className="alert alert-danger mt-3">
+              <strong>Error!</strong> {error}
+            </div>
+          )}
+          {loading && (
+            <div className="alert alert-info mt-3">
+              <strong>Loading...</strong> Please wait while we fetch the data.
             </div>
           )}
         </div>

@@ -12,9 +12,9 @@ const VerifyCertificateForm = ({certificateId,setCertificateId,getCertificate}) 
       
     };      
     return (
-      <div class="card">
-        <h5 class="card-header">Enter Your certificate id to verify</h5>
-        <div class="card-body">
+      <div className="card">
+        <h5 className="card-header">Enter Your certificate id to verify</h5>
+        <div className="card-body">
           
           <form className="input-group" onSubmit={handleSubmit}>
             <input
