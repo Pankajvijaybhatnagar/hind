@@ -19,10 +19,16 @@ const page = () => {
     try {
       const response = await fetch(
         `${conf.apiBaseUri}/certificate?e=${enrollmentNo}`, 
+        {
+          method: "GET",
+           mode: 'cors',
+        }
+        
         
       );
-      console.log(response)
-      const data = await JSON.parse(response);
+      const data = await response.json();
+      console.log(data.student)
+      
       if (data.student) {
         setStudentData(data.student);
         setIsStudent(true)
