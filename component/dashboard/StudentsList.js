@@ -2,14 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Pagination from "@/context/Pagination";
 
-const StudentsList = ({ students,handleEditStudent }) => {
+const StudentsList = ({ students,handleEditStudent,totalPages }) => {
   return (
     <div>
       <table style={{fontSize: '0.85rem'}} className="table table-hover table-border table-sm table-responsive text-sm">
         <thead>
           <tr>
             <th scope="col">Sr</th>
-            <th scope="col">Img</th>
+            {/* <th scope="col">Img</th> */}
             <th scope="col">CandidateName</th>
             <th scope="col">Father</th>
             {/* <th scope="col">Mother</th> */}
@@ -34,7 +34,7 @@ const StudentsList = ({ students,handleEditStudent }) => {
           {students.map((student, i) => (
             <tr key={i}>
               <th scope="row">{i + 1}</th>
-              <td>
+              {/* <td>
                 <Image
                   src={student.avatar.startsWith('/') ? student.avatar : `/images/${student.avatar}`}
                   alt="avatar"
@@ -42,7 +42,7 @@ const StudentsList = ({ students,handleEditStudent }) => {
                   height={30}
                   style={{ objectFit: 'cover', borderRadius: '5px' }}
                 />
-              </td>
+              </td> */}
               <td>{student.name}</td>
               <td>{student.fatherName}</td>
               {/* <td>{student.motherName}</td>

@@ -29,9 +29,9 @@ if(!isLoggedIn) return null;
               <Sidebar/>
           </div>
           <div className=' col-12 col-lg-10 col-xl-10 col-xxl-10 p3'>
-              <h4 className='text-bold text-center pt-3'>Welcome to Admin Panel - HCSE</h4> 
-              <hr/>
-              <div style={{ height: '85dvh',marginRight:"10px" }} className='overflow-auto p-2'>
+              <h5 className='fw-bold  text-center pt-1'>Welcome to Admin Panel - HCSE</h5> 
+              <hr className='my-0' />
+              <div style={{ height: '92dvh',marginRight:"10px" }} className='overflow-auto p-2'>
                   {children}
               </div>
           </div>

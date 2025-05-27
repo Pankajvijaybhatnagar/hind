@@ -23,14 +23,36 @@ const LoginForm = () => {
     } else {
       // If the form is successfully submitted, show a success toast
 
-      const response = await fetch(`${conf.apiBaseUri}/login`, {
-        method:"POST",
-        body: JSON.stringify({
-          email,password
+      try {
+        const response = await fetch(`${conf.apiBaseUri}/login`, {
+          method:"POST",
+          body: JSON.stringify({
+            email,password
+          })
         })
-      })
-      console.log(response)
+  
+        const data = await response.json();
+        if (data.error) {
+          toast.error(data.error);
+          return;
+        }
 
+        console.log(data);
+        if (data.token) {
+          localStorage.setItem("token", data.token); // Store the token in localStorage
+          toast.success("Logged In successfully!");
+          setPassword("");
+          setEmail("");
+          router.push("/dashboard"); // Redirect to the dashboard
+        } else {
+          toast.error("Login failed. Please check your credentials.");
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        toast.error("Login failed. Please try again later.");
+        return;
+        
+      }
 
       // if( email === "hcseindia14@gmail.com" && password === "admin@101") {
       //   localStorage.setItem("token", `${email}:${password}`); // Replace with actual token logic

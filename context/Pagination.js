@@ -64,7 +64,7 @@ const Pagination = ({ currentPage = 2, totalPages = 5, setCurrentPage }) => {
   };
 
   return (
-    <nav aria-label="Page navigation" className="text-center mt-4">
+    <nav aria-label="Page navigation" className=" mt-1">
       <ul className="pagination justify-content-center">
         <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
           <button
