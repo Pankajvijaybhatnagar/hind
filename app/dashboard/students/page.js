@@ -177,6 +177,7 @@ const page = () => {
                 students={students}
                 handleEditStudent={handleEditStudent}
                 isLoading={isLoading}
+                currentPage={currentPage}
               />
               <span className="d-flex justify-content-between align-items-center">
                 <Pagination
@@ -211,7 +212,9 @@ const page = () => {
           </div>
           <AddStudentForm
             studentData={studentData}
-            setStudentData={setStudentData}
+              setStudentData={setStudentData}
+              getStudents={getStudents}
+              setIsListShow={setIsListShow}
           />
         </>
       )}

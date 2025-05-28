@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const StudentsList = ({ students,handleEditStudent,totalPages,isLoading }) => {
+const StudentsList = ({ students,handleEditStudent,currentPage,isLoading }) => {
   return (
     <div>
       <table style={{fontSize: '0.85rem'}} className="table table-hover table-border table-sm table-responsive text-sm">
@@ -43,7 +43,7 @@ const StudentsList = ({ students,handleEditStudent,totalPages,isLoading }) => {
               students.map((student, i) => (
                 <tr key={i}>
                   {/* <th scope="row">{i + 1}</th> */}
-                  <th scope="row">{student.id}</th>
+                  <th scope="row">{(currentPage-1 )*10+i+1}</th>
                   {/* <td>
                     <Image
                       src={student.avatar.startsWith('/') ? student.avatar : `/images/${student.avatar}`}

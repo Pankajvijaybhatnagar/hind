@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Styles from "./Dashboard.module.css";
 import conf from "@/lib/config";
+import { toast } from "react-toastify";
 
-const AddStudentForm = ({ studentData, setStudentData }) => {
+const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow }) => {
   const [avatarPreview, setAvatarPreview] = useState(`${conf.apiBaseUri}/uploads/${studentData.avatar}`);
   const [errors, setErrors] = useState({});
+  const [avatar,setAvatar]=useState(null)
 
   const handleChange = (type, value) => {
     setStudentData((prevData) => ({
@@ -39,9 +41,12 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
       if (result.success) {
         return result.filename;
       } else {
+        
         throw new Error("File upload failed");
       }
     } catch (error) {
+      toast.error("Photo upload error")
+
       throw new Error("File upload error: " + error.message);
     }
   };
@@ -56,8 +61,8 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
       const payload = { ...studentData };
 
       // Upload avatar if present
-      if (studentData.avatar) {
-        const uploadedFilename = await uploadAvatar(studentData.avatar);
+      if (avatar) {
+        const uploadedFilename = await uploadAvatar(avatar);
         payload.avatar = uploadedFilename;
       }
 
@@ -71,6 +76,11 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
       });
 
       const data = await response.json();
+      if (data.message) {
+        getStudents()
+        toast.success(data.message)
+        setIsListShow(true)
+      }
       if (!response.ok) {
         if (data.errors) {
           setErrors(data.errors);
@@ -83,6 +93,8 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
     } catch (error) {
       console.log("Error during API request:", error.message);
     }
+    
+    
   };
 
   return (
@@ -172,7 +184,10 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
           <div className="mb-3">
             <label className="form-label">Photo</label>
             <input
-              onChange={(e) => handleChange("avatar", e.target.files[0])}
+              onChange={(e) => {
+                setAvatar(e.target.files[0])
+                setAvatarPreview(URL.createObjectURL(e.target.files[0]))
+              }}
               type="file"
               className={`form-control form-control-sm ${
                 errors.avatar ? "is-invalid" : ""
