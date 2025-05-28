@@ -10,7 +10,7 @@ const VideoModal = () => {
     } = useEduorContext();
     
     // Updated video URL to reflect an educational theme (You can change this URL to any other relevant educational video)
-    const embedUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Replace with your educational video URL
+    const embedUrl = "https://www.youtube.com/embed/dQw4w9WgXc"; // Replace with your educational video URL
 
     return (
         <Modal 

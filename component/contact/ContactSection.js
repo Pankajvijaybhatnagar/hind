@@ -7,8 +7,8 @@ const ContactSection = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 wow fadeInUp">
-            <div className="tf__study_contact_text">
-              <div className="img">
+            <div className="tf__study_contact_text text-center">
+              {/* <div className="img">
                 <img
                   src="images/study_contact_img.jpg"
                   alt="contact"
@@ -18,13 +18,10 @@ const ContactSection = () => {
               <div className="text">
                 <h4>Study Off Flexibly</h4>
                 <p>
-                  We can provide you with a reliable handyan in this school cros
-                  students Please input an email address down below we can be
-                  collage apply school. Please input anand school. included the
-                  today.
+                  HCSE Education
                 </p>
-              </div>
-              <Link href="/contact">contact us</Link>
+              </div> */}
+              {/* <Link href="/contact">contact us</Link> */}
             </div>
           </div>
         </div>

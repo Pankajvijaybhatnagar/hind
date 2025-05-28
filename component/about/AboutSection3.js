@@ -101,13 +101,16 @@ const AboutSection3 = ({ style }) => {
               </ul>
             </div>
           </div>
-          <div className="col-12 mt_110 xs_mt_100 wow fadeInUp">
-            <div className="tf__about_us_counter d-flex flex-wrap align-items-center">
+          <div className="col-12 mt_110 xs_mt_100 wow fadeInUp ">
+            <br></br>
+            <br></br>
+            <br></br>
+            {/* <div className="tf__about_us_counter d-flex flex-wrap align-items-center">
               <p>
                 <span className="counter">270,000+</span> Students Empowered for a Bright Future!
               </p>
               <a href="#">Explore All</a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
