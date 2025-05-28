@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 import Styles from "./Certificate.module.css";
+import conf from "@/lib/config";
 
 const VerifyCertificateContainer = ({ studentData }) => {
   const handlePrint = () => {
@@ -33,7 +34,7 @@ const VerifyCertificateContainer = ({ studentData }) => {
             className={Styles.studentavatar}
             height={200}
             width={200}
-            src={studentData.avatar}
+            src={`${conf.apiBaseUri}/uploads/${studentData.avatar}`}
           />
           <Image
             height={100}
