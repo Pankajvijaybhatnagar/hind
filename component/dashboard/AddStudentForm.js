@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Styles from "./Dashboard.module.css";
+import conf from '@/lib/config';
 
 const AddStudentForm = ({studentData,setStudentData}) => {
 
@@ -11,11 +12,27 @@ const AddStudentForm = ({studentData,setStudentData}) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(studentData);
-    // You can add further logic to handle the form submission, like sending data to an API
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log(studentData);
+
+  try {
+    const response = await fetch(`${conf.apiBaseUri}/certificates`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`, 
+      },
+      body: JSON.stringify(studentData)
+    });
+
+    const data = await response.json();
+    console.log("Response from API:", data);
+  } catch (error) {
+    console.log("Error during API request:", error);
+  }
+};
+
 
   return (
     <div>

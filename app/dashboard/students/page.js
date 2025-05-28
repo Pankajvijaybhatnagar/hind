@@ -46,48 +46,7 @@ const page = () => {
    
     pageSize: 10,
   });
-  const [students, setStudents] = useState([
-    {
-      name: "RAJAN SINGH",
-      avatar: "/images/about_2_img_copy.jpg",
-      fatherName: "DALJEET SINGH",
-      motherName: "LAKH VEER KAUR",
-      dateOfBirth: "22-DEC-1991",
-      aadharCardNo: "6982278482403",
-      enrolmentNo: "NIED2201316107HR",
-      enrolmentDate: "02-Jul-2022",
-      courseName: "Diploma in English ( DE )",
-      courseStatus: "Completed",
-      academicDivision: "ENGLISH SPOKEN",
-      courseDuration: "02/07/2022 to 02/01/2023 (6 Months)",
-      totalObtainedMarks: "483/600",
-      overallPercentage: "80.5",
-      grade: "A",
-      finalResult: "PASS",
-      certificateIssueDate: "10/03/2023",
-      trainingCentre: "SECTOR-15 , YAMUNA NAGAR, HARYANA",
-    },
-    {
-      name: "RAJAN SINGH",
-      avatar: "/images/about_2_img_copy.jpg",
-      fatherName: "DALJEET SINGH",
-      motherName: "LAKH VEER KAUR",
-      dateOfBirth: "22-DEC-1991",
-      aadharCardNo: "6982278482403",
-      enrolmentNo: "NISE2201316107HR",
-      enrolmentDate: "02-Jul-2022",
-      courseName: "Diploma in English ( DE )",
-      courseStatus: "Completed",
-      academicDivision: "ENGLISH SPOKEN",
-      courseDuration: "02/07/2022 to 02/01/2023 (6 Months)",
-      totalObtainedMarks: "483/600",
-      overallPercentage: "80.5",
-      grade: "A",
-      finalResult: "PASS",
-      certificateIssueDate: "10/03/2023",
-      trainingCentre: "SECTOR-15 , YAMUNA NAGAR, HARYANA",
-    },
-  ]);
+  const [students, setStudents] = useState([]);
 
   const handleAddNewStudent = () => {
     setStudentData({
