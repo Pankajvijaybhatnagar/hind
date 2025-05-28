@@ -81,6 +81,8 @@ const page = () => {
   };
 
   const getStudents = async (page) => {
+    setIsLoading(true);
+    setError(null);
     try {
       // makeing query from filters
       const query = new URLSearchParams({
@@ -109,6 +111,8 @@ const page = () => {
       setTotalRecords(data?.pagination?.totalRecords);
     } catch (error) {
       console.log("Error fetching students:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -166,12 +170,13 @@ const page = () => {
               Add new
             </button>
           </div>
-          {studentData.length > 0 ? (
+          {students.length > 0 ? (
             <>
               <StudentsList
                 totalPages={totalPages}
                 students={students}
                 handleEditStudent={handleEditStudent}
+                isLoading={isLoading}
               />
               <span className="d-flex justify-content-between align-items-center">
                 <Pagination

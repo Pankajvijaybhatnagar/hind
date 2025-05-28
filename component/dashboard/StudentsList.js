@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Pagination from "@/context/Pagination";
 
-const StudentsList = ({ students,handleEditStudent,totalPages }) => {
+const StudentsList = ({ students,handleEditStudent,totalPages,isLoading }) => {
   return (
     <div>
       <table style={{fontSize: '0.85rem'}} className="table table-hover table-border table-sm table-responsive text-sm">
@@ -31,46 +31,58 @@ const StudentsList = ({ students,handleEditStudent,totalPages }) => {
           </tr>
         </thead>
         <tbody>
-          {students.map((student, i) => (
-            <tr key={i}>
-              <th scope="row">{i + 1}</th>
-              {/* <td>
-                <Image
-                  src={student.avatar.startsWith('/') ? student.avatar : `/images/${student.avatar}`}
-                  alt="avatar"
-                  width={30}
-                  height={30}
-                  style={{ objectFit: 'cover', borderRadius: '5px' }}
-                />
-              </td> */}
-              <td>{student.name}</td>
-              <td>{student.fatherName}</td>
-              {/* <td>{student.motherName}</td>
-              <td>{student.dateOfBirth}</td> */}
-              <td>{student.aadharCardNo}</td>
-              <td>{student.enrolmentNo}</td>
-              <td>{student.enrolmentDate}</td>
-              <td>{student.courseName}</td>
-              <td>{student.courseStatus}</td>
-              {/* <td>{student.academicDivision}</td>
-              <td>{student.courseDuration}</td>
-              <td>{student.totalObtainedMarks}</td>
-              <td>{student.overallPercentage}</td>
-              <td>{student.grade}</td>
-              <td>{student.finalResult}</td> */}
-              <td>{student.certificateIssueDate}</td>
-              <td>
-
-                <button onClick={() => handleEditStudent(student)} className="btn btn-success btn-sm me-1">
-                  <i className="fa fa-edit"></i>
-                </button>
-                <button className="btn btn-danger btn-sm">
-                  <i className="fa fa-trash"></i>
-                </button>
-              </td>
-              {/* <td>{student.trainingCentre}</td> */}
-            </tr>
-          ))}
+          {
+            isLoading ? (
+              <tr>
+                <td colSpan="12" className="text-center">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              students.map((student, i) => (
+                <tr key={i}>
+                  <th scope="row">{i + 1}</th>
+                  {/* <td>
+                    <Image
+                      src={student.avatar.startsWith('/') ? student.avatar : `/images/${student.avatar}`}
+                      alt="avatar"
+                      width={30}
+                      height={30}
+                      style={{ objectFit: 'cover', borderRadius: '5px' }}
+                    />
+                  </td> */}
+                  <td>{student.name}</td>
+                  <td>{student.fatherName}</td>
+                  {/* <td>{student.motherName}</td>
+                  <td>{student.dateOfBirth}</td> */}
+                  <td>{student.aadharCardNo}</td>
+                  <td>{student.enrolmentNo}</td>
+                  <td>{student.enrolmentDate}</td>
+                  <td>{student.courseName}</td>
+                  <td>{student.courseStatus}</td>
+                  {/* <td>{student.academicDivision}</td>
+                  <td>{student.courseDuration}</td>
+                  <td>{student.totalObtainedMarks}</td>
+                  <td>{student.overallPercentage}</td>
+                  <td>{student.grade}</td>
+                  <td>{student.finalResult}</td> */}
+                  <td>{student.certificateIssueDate}</td>
+                  <td>
+    
+                    <button onClick={() => handleEditStudent(student)} className="btn btn-success btn-sm me-1">
+                      <i className="fa fa-edit"></i>
+                    </button>
+                    <button className="btn btn-danger btn-sm">
+                      <i className="fa fa-trash"></i>
+                    </button>
+                  </td>
+                  {/* <td>{student.trainingCentre}</td> */}
+                </tr>
+              ))
+            )
+          }
         </tbody>
       </table>
 
