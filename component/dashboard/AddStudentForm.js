@@ -1,134 +1,186 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Styles from "./Dashboard.module.css";
-import conf from '@/lib/config';
+import conf from "@/lib/config";
 
-const AddStudentForm = ({studentData,setStudentData}) => {
-
+const AddStudentForm = ({ studentData, setStudentData }) => {
+  const [avatarPreview, setAvatarPreview] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (type, value) => {
-    setStudentData(prevData => ({
+    setStudentData((prevData) => ({
       ...prevData,
       [type]: value,
     }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [type]: "",
+    }));
+
+    if (type === "avatar") {
+      setAvatarPreview(URL.createObjectURL(value));
+    }
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log(studentData);
+  const uploadAvatar = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
 
-  try {
-    const response = await fetch(`${conf.apiBaseUri}/certificates`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`, 
-      },
-      body: JSON.stringify(studentData)
-    });
+    try {
+      const response = await fetch(`${conf.apiBaseUri}/upload`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      });
 
-    const data = await response.json();
-    console.log("Response from API:", data);
-  } catch (error) {
-    console.log("Error during API request:", error);
-  }
-};
+      const result = await response.json();
+      if (result.success) {
+        return result.filename;
+      } else {
+        throw new Error("File upload failed");
+      }
+    } catch (error) {
+      throw new Error("File upload error: " + error.message);
+    }
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors({});
+
+    try {
+      const payload = { ...studentData };
+
+      // Upload avatar if present
+      if (studentData.avatar) {
+        const uploadedFilename = await uploadAvatar(studentData.avatar);
+        payload.avatar = uploadedFilename;
+      }
+
+      const response = await fetch(`${conf.apiBaseUri}/certificates`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        if (data.errors) {
+          setErrors(data.errors);
+        } else {
+          throw new Error(data.message || "Submission failed");
+        }
+      } else {
+        console.log("Response from API:", data);
+      }
+    } catch (error) {
+      console.log("Error during API request:", error.message);
+    }
+  };
 
   return (
-    <div>
-      <div>
-        <form style={{ fontSize: "0.9rem" }} className={Styles.formContainer} onSubmit={handleSubmit}>
-          <div className="">
-            <label className="form-label">Full Name</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.name} name='name' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Father's Name</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.fatherName} name='fatherName' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Mother's Name</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.motherName} name='motherName' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Date of Birth</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.dateOfBirth} name='dateOfBirth' type="date" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Aadhar Card Number</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.aadharCardNo} name='aadharCardNumber' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Enrolment Number</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.enrolmentNumber} name='enrolmentNumber' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Enrolment Date</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.enrolmentDate} name='enrolmentDate' type="date" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Course Name</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.courseName} name='courseName' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Course Status</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.courseStatus} name='courseStatus' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Academic Division</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.academicDivision} name='academicDivision' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Course Duration</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.courseDuration} name='courseDuration' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Total Obtained Marks</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.totalObtainedMarks} name='totalObtainedMarks' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Overall Percentage</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.overallPercentage} name='overallPercentage' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Grade</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.grade} name='grade' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Final Result</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.finalResult} name='finalResult' type="text" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Certificate Issue Date</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.certificateIssueDate} name='certificateIssueDate' type="date" className="form-control form-control-sm" />
-          </div>
-
-          <div className="">
-            <label className="form-label">Training Centre</label>
-            <input onInput={(e) => handleChange(e.target.name, e.target.value)} value={studentData.trainingCentre} name='trainingCentre' type="text" className="form-control form-control-sm" />
-          </div>
+    <div style={{maxWidth:"96%"}}  className="row ">
+      <div className="col-md-2">
+        <img
+          src={avatarPreview}
+          alt="Avatar Preview"
+          style={{
+            width: "100px",
+            height: "100px",
+            marginTop: 10,
+            objectFit: "cover",
+          }}
+        />
+      </div>
+      <div className="col-md-10">
+        <form
+          style={{ fontSize: "0.9rem" }}
+          className={Styles.formContainer}
+          onSubmit={handleSubmit}
+        >
+          {[
+            { label: "Full Name", name: "name", type: "text" },
+            { label: "Father's Name", name: "fatherName", type: "text" },
+            { label: "Mother's Name", name: "motherName", type: "text" },
+            { label: "Date of Birth", name: "dateOfBirth", type: "date" },
+            {
+              label: "Aadhar Card Number",
+              name: "aadharCardNumber",
+              type: "text",
+            },
+            {
+              label: "Enrolment Number",
+              name: "enrolmentNumber",
+              type: "text",
+            },
+            { label: "Enrolment Date", name: "enrolmentDate", type: "date" },
+            { label: "Course Name", name: "courseName", type: "text" },
+            { label: "Course Status", name: "courseStatus", type: "text" },
+            {
+              label: "Academic Division",
+              name: "academicDivision",
+              type: "text",
+            },
+            { label: "Course Duration", name: "courseDuration", type: "text" },
+            {
+              label: "Total Obtained Marks",
+              name: "totalObtainedMarks",
+              type: "text",
+            },
+            {
+              label: "Overall Percentage",
+              name: "overallPercentage",
+              type: "text",
+            },
+            { label: "Grade", name: "grade", type: "text" },
+            { label: "Final Result", name: "finalResult", type: "text" },
+            {
+              label: "Certificate Issue Date",
+              name: "certificateIssueDate",
+              type: "date",
+            },
+            { label: "Training Centre", name: "trainingCentre", type: "text" },
+          ].map((field) => (
+            <div className="" key={field.name}>
+              <label className="form-label">{field.label}</label>
+              <input
+                onInput={(e) => handleChange(e.target.name, e.target.value)}
+                value={studentData[field.name]}
+                name={field.name}
+                type={field.type}
+                className={`form-control form-control-sm ${
+                  errors[field.name] ? "is-invalid" : ""
+                }`}
+              />
+              {errors[field.name] && (
+                <small className="text-danger">{errors[field.name]}</small>
+              )}
+            </div>
+          ))}
 
           <div className="mb-3">
             <label className="form-label">Photo</label>
-            <input onChange={(e) => handleChange('avatar', e.target.files[0])} type="file" className="form-control form-control-sm" />
+            <input
+              onChange={(e) => handleChange("avatar", e.target.files[0])}
+              type="file"
+              className={`form-control form-control-sm ${
+                errors.avatar ? "is-invalid" : ""
+              }`}
+            />
+
+            {errors.avatar && (
+              <small className="text-danger">{errors.avatar}</small>
+            )}
           </div>
 
-          <button type="submit" className="btn btn-primary btn-sm">Submit</button>
+          <button type="submit" className="btn btn-primary btn-sm">
+            Submit
+          </button>
         </form>
       </div>
     </div>
