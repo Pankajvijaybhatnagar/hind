@@ -87,7 +87,7 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
     <div style={{maxWidth:"96%"}}  className="row ">
       <div className="col-md-2">
         <img
-          src={avatarPreview}
+          src={`${conf.apiBaseUri}/uploads/${avatarPreview}`}
           alt="Avatar Preview"
           style={{
             width: "100px",
