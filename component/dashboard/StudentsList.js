@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Pagination from "@/context/Pagination";
 
 const StudentsList = ({ students,handleEditStudent,totalPages,isLoading }) => {
   return (
@@ -43,7 +42,8 @@ const StudentsList = ({ students,handleEditStudent,totalPages,isLoading }) => {
             ) : (
               students.map((student, i) => (
                 <tr key={i}>
-                  <th scope="row">{i + 1}</th>
+                  {/* <th scope="row">{i + 1}</th> */}
+                  <th scope="row">{student.id}</th>
                   {/* <td>
                     <Image
                       src={student.avatar.startsWith('/') ? student.avatar : `/images/${student.avatar}`}
@@ -57,8 +57,8 @@ const StudentsList = ({ students,handleEditStudent,totalPages,isLoading }) => {
                   <td>{student.fatherName}</td>
                   {/* <td>{student.motherName}</td>
                   <td>{student.dateOfBirth}</td> */}
-                  <td>{student.aadharCardNo}</td>
-                  <td>{student.enrolmentNo}</td>
+                  <td>{student.aadharCardNumber}</td>
+                  <td>{student.enrolmentNumber}</td>
                   <td>{student.enrolmentDate}</td>
                   <td>{student.courseName}</td>
                   <td>{student.courseStatus}</td>

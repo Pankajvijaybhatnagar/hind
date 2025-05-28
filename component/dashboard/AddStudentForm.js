@@ -3,7 +3,7 @@ import Styles from "./Dashboard.module.css";
 import conf from "@/lib/config";
 
 const AddStudentForm = ({ studentData, setStudentData }) => {
-  const [avatarPreview, setAvatarPreview] = useState(null);
+  const [avatarPreview, setAvatarPreview] = useState(`${conf.apiBaseUri}/uploads/${studentData.avatar}`);
   const [errors, setErrors] = useState({});
 
   const handleChange = (type, value) => {
@@ -50,6 +50,8 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
     e.preventDefault();
     setErrors({});
 
+    const method = studentData.id ?"PUT":"POST"
+
     try {
       const payload = { ...studentData };
 
@@ -60,7 +62,7 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
       }
 
       const response = await fetch(`${conf.apiBaseUri}/certificates`, {
-        method: "POST",
+        method: method,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -86,16 +88,20 @@ const AddStudentForm = ({ studentData, setStudentData }) => {
   return (
     <div style={{maxWidth:"96%"}}  className="row ">
       <div className="col-md-2">
+        <div style={{
+            width: "150px",
+            height: "150px",
+            marginTop:"40px"
+          }}>
         <img
-          src={`${conf.apiBaseUri}/uploads/${avatarPreview}`}
+          src={`${avatarPreview}`}
           alt="Avatar Preview"
           style={{
-            width: "100px",
-            height: "100px",
-            marginTop: 10,
+          
             objectFit: "cover",
           }}
         />
+        </div>
       </div>
       <div className="col-md-10">
         <form

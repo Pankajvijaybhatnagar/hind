@@ -202,10 +202,10 @@ const page = () => {
         </div>
       ) : (
         <>
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <span className="fs-6 fw-bolder">Adding New Student</span>
+          <div className="d-flex justify-content-between align-items-center mb-0">
+            <span className="fs-6 fw-bolder">{studentData.id ? "Updating":"Add new"}  Student</span>
 
-            <button onClick={handleListShow} className="btn btn-primary">
+            <button onClick={handleListShow} className="btn btn-primary btn-sm">
               All students
             </button>
           </div>
