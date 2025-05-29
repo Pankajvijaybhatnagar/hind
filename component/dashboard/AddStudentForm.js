@@ -76,7 +76,8 @@ const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow 
       });
 
       const data = await response.json();
-      if (data.message) {
+      console.log("Response data:", data);
+      if (data.success) {
         getStudents()
         toast.success(data.message)
         setIsListShow(true)
@@ -84,6 +85,7 @@ const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow 
       if (!response.ok) {
         if (data.errors) {
           setErrors(data.errors);
+
         } else {
           throw new Error(data.message || "Submission failed");
         }
@@ -91,6 +93,7 @@ const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow 
         console.log("Response from API:", data);
       }
     } catch (error) {
+      toast.error(error.message || "An error occurred");
       console.log("Error during API request:", error.message);
     }
     
