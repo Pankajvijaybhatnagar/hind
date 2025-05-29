@@ -32,7 +32,7 @@ const VerifyCertificateContainer = ({ studentData }) => {
         <div className={Styles.photocontainer}>
           <img
             className={Styles.studentavatar}
-            height={200}
+            height={300}
             width={200}
             src={`${conf.apiBaseUri}/uploads/${studentData.avatar}`}
           />
