@@ -3,71 +3,90 @@ import Styles from "./Dashboard.module.css";
 import conf from "@/lib/config";
 import { toast } from "react-toastify";
 
-const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow }) => {
-  const [avatarPreview, setAvatarPreview] = useState(`${conf.apiBaseUri}/uploads/${studentData.avatar}`);
+const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListShow }) => {
+  const defaultAvatar = "/default-avatar.png"; // Ensure this image exists in your public folder
+  const [avatarPreview, setAvatarPreview] = useState(
+    studentData.avatar ? `${conf.apiBaseUri}/uploads/${studentData.avatar}` : defaultAvatar
+  );
   const [errors, setErrors] = useState({});
-  const [avatar,setAvatar]=useState(null)
+  const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (type, value) => {
-    setStudentData((prevData) => ({
-      ...prevData,
+    setStudentData((prev) => ({
+      ...prev,
       [type]: value,
     }));
-
     setErrors((prev) => ({
       ...prev,
       [type]: "",
     }));
+  };
 
-    if (type === "avatar") {
-      setAvatarPreview(URL.createObjectURL(value));
+  const validateFields = () => {
+    const newErrors = {};
+    const requiredFields = [
+      "name", "fatherName", "motherName", "dateOfBirth", "aadharCardNumber",
+      "enrolmentNumber", "enrolmentDate", "courseName", "courseStatus", "academicDivision",
+      "courseDuration", "totalObtainedMarks", "overallPercentage", "grade", "finalResult",
+      "certificateIssueDate", "trainingCentre"
+    ];
+
+    requiredFields.forEach((field) => {
+      if (!studentData[field]?.trim()) {
+        newErrors[field] = "This field is required";
+      }
+    });
+
+    if (!/^\d{12}$/.test(studentData.aadharCardNumber || "")) {
+      newErrors.aadharCardNumber = "Aadhar must be a 12-digit number";
     }
+
+    return newErrors;
   };
 
   const uploadAvatar = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    try {
-      const response = await fetch(`${conf.apiBaseUri}/upload`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: formData,
-      });
+    const response = await fetch(`${conf.apiBaseUri}/upload`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: formData,
+    });
 
-      const result = await response.json();
-      if (result.success) {
-        return result.filename;
-      } else {
-        
-        throw new Error("File upload failed");
-      }
-    } catch (error) {
-      toast.error("Photo upload error")
-
-      throw new Error("File upload error: " + error.message);
+    const result = await response.json();
+    if (result.success) {
+      return result.filename;
+    } else {
+      throw new Error("Photo upload failed");
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
+    const validationErrors = validateFields();
 
-    const method = studentData.id ?"PUT":"POST"
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setLoading(true);
+    const method = studentData.id ? "PUT" : "POST";
+    const payload = { ...studentData };
 
     try {
-      const payload = { ...studentData };
-
-      // Upload avatar if present
       if (avatar) {
         const uploadedFilename = await uploadAvatar(avatar);
         payload.avatar = uploadedFilename;
       }
 
       const response = await fetch(`${conf.apiBaseUri}/certificates`, {
-        method: method,
+        method,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -76,46 +95,33 @@ const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow 
       });
 
       const data = await response.json();
-      console.log("Response data:", data);
       if (data.success) {
-        getStudents()
-        toast.success(data.message)
-        setIsListShow(true)
-      }
-      if (!response.ok) {
+        toast.success(data.message);
+        getStudents();
+        setIsListShow(true);
+      } else {
         if (data.errors) {
           setErrors(data.errors);
-
         } else {
           throw new Error(data.message || "Submission failed");
         }
-      } else {
-        console.log("Response from API:", data);
       }
     } catch (error) {
       toast.error(error.message || "An error occurred");
-      console.log("Error during API request:", error.message);
+    } finally {
+      setLoading(false);
     }
-    
-    
   };
 
   return (
-    <div style={{maxWidth:"96%"}}  className="row ">
+    <div style={{ maxWidth: "96%" }} className="row">
       <div className="col-md-2">
-        <div style={{
-            width: "150px",
-            height: "150px",
-            marginTop:"40px"
-          }}>
-        <img
-          src={`${avatarPreview}`}
-          alt="Avatar Preview"
-          style={{
-          
-            objectFit: "cover",
-          }}
-        />
+        <div style={{ width: "150px", height: "150px", marginTop: "40px" }}>
+          <img
+            src={avatarPreview}
+            alt="Avatar Preview"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
         </div>
       </div>
       <div className="col-md-10">
@@ -129,49 +135,25 @@ const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow 
             { label: "Father's Name", name: "fatherName", type: "text" },
             { label: "Mother's Name", name: "motherName", type: "text" },
             { label: "Date of Birth", name: "dateOfBirth", type: "date" },
-            {
-              label: "Aadhar Card Number",
-              name: "aadharCardNumber",
-              type: "text",
-            },
-            {
-              label: "Enrolment Number",
-              name: "enrolmentNumber",
-              type: "text",
-            },
+            { label: "Aadhar Card Number", name: "aadharCardNumber", type: "text" },
+            { label: "Enrolment Number", name: "enrolmentNumber", type: "text" },
             { label: "Enrolment Date", name: "enrolmentDate", type: "date" },
             { label: "Course Name", name: "courseName", type: "text" },
             { label: "Course Status", name: "courseStatus", type: "text" },
-            {
-              label: "Academic Division",
-              name: "academicDivision",
-              type: "text",
-            },
+            { label: "Academic Division", name: "academicDivision", type: "text" },
             { label: "Course Duration", name: "courseDuration", type: "text" },
-            {
-              label: "Total Obtained Marks",
-              name: "totalObtainedMarks",
-              type: "text",
-            },
-            {
-              label: "Overall Percentage",
-              name: "overallPercentage",
-              type: "text",
-            },
+            { label: "Total Obtained Marks", name: "totalObtainedMarks", type: "text" },
+            { label: "Overall Percentage", name: "overallPercentage", type: "text" },
             { label: "Grade", name: "grade", type: "text" },
             { label: "Final Result", name: "finalResult", type: "text" },
-            {
-              label: "Certificate Issue Date",
-              name: "certificateIssueDate",
-              type: "date",
-            },
+            { label: "Certificate Issue Date", name: "certificateIssueDate", type: "date" },
             { label: "Training Centre", name: "trainingCentre", type: "text" },
           ].map((field) => (
-            <div className="" key={field.name}>
+            <div key={field.name}>
               <label className="form-label">{field.label}</label>
               <input
                 onInput={(e) => handleChange(e.target.name, e.target.value)}
-                value={studentData[field.name]}
+                value={studentData[field.name] || ""}
                 name={field.name}
                 type={field.type}
                 className={`form-control form-control-sm ${
@@ -188,22 +170,24 @@ const AddStudentForm = ({ studentData, setStudentData,getStudents,setIsListShow 
             <label className="form-label">Photo</label>
             <input
               onChange={(e) => {
-                setAvatar(e.target.files[0])
-                setAvatarPreview(URL.createObjectURL(e.target.files[0]))
+                const file = e.target.files[0];
+                if (file) {
+                  setAvatar(file);
+                  setAvatarPreview(URL.createObjectURL(file));
+                }
               }}
               type="file"
               className={`form-control form-control-sm ${
                 errors.avatar ? "is-invalid" : ""
               }`}
             />
-
             {errors.avatar && (
               <small className="text-danger">{errors.avatar}</small>
             )}
           </div>
 
-          <button type="submit" className="btn btn-primary btn-sm">
-            Submit
+          <button type="submit" className="btn btn-primary btn-sm" disabled={loading}>
+            {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>
