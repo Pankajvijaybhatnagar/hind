@@ -3,10 +3,17 @@ import Styles from "./Dashboard.module.css";
 import conf from "@/lib/config";
 import { toast } from "react-toastify";
 
-const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListShow }) => {
+const AddStudentForm = ({
+  studentData,
+  setStudentData,
+  getStudents,
+  setIsListShow,
+}) => {
   const defaultAvatar = "/default-avatar.png"; // Ensure this image exists in your public folder
   const [avatarPreview, setAvatarPreview] = useState(
-    studentData.avatar ? `${conf.apiBaseUri}/uploads/${studentData.avatar}` : defaultAvatar
+    studentData.avatar
+      ? `${conf.apiBaseUri}/uploads/${studentData.avatar}`
+      : defaultAvatar
   );
   const [errors, setErrors] = useState({});
   const [avatar, setAvatar] = useState(null);
@@ -26,10 +33,21 @@ const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListSho
   const validateFields = () => {
     const newErrors = {};
     const requiredFields = [
-      "name", "fatherName", "motherName", "dateOfBirth", "aadharCardNumber",
-      "enrolmentNumber", "rollNo", "courseName", 
-      "courseDuration", "totalObtainedMarks", "overallPercentage", "grade", "finalResult",
-      "certificateIssueDate", "trainingCentre"
+      "name",
+      "fatherName",
+      "motherName",
+      "dateOfBirth",
+      "aadharCardNumber",
+      "enrolmentNumber",
+      "rollNo",
+      "courseName",
+      "courseDuration",
+      "totalObtainedMarks",
+      "overallPercentage",
+      "grade",
+      "finalResult",
+      "certificateIssueDate",
+      "trainingCentre",
     ];
 
     requiredFields.forEach((field) => {
@@ -116,7 +134,10 @@ const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListSho
   return (
     <div style={{ maxWidth: "96%" }} className="row">
       <div className="col-md-2">
-        <div className="shadow" style={{ width: "150px", height: "190px", marginTop: "40px" }}>
+        <div
+          className="shadow"
+          style={{ width: "150px", height: "190px", marginTop: "40px" }}
+        >
           <img
             src={avatarPreview}
             alt="Avatar Preview"
@@ -131,30 +152,106 @@ const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListSho
           onSubmit={handleSubmit}
         >
           {[
-            { label: "Roll No", name: "rollNo", type: "text" },
-            { label: "Full Name", name: "name", type: "text" },
-            { label: "Father's Name", name: "fatherName", type: "text" },
-            { label: "Mother's Name", name: "motherName", type: "text" },
-            { label: "Date of Birth", name: "dateOfBirth", type: "date" },
-            { label: "Aadhar Card Number", name: "aadharCardNumber", type: "text" },
-            { label: "Enrolment Number", name: "enrolmentNumber", type: "text" },
-            
-            { label: "Course Name", name: "courseName", type: "text" },
-            { label: "Course Duration", name: "courseDuration", type: "text" },
-            { label: "Total Obtained Marks", name: "totalObtainedMarks", type: "text" },
-            { label: "Overall Percentage", name: "overallPercentage", type: "text" },
-            { label: "Grade", name: "grade", type: "text" },
-            { label: "Final Result", name: "finalResult", type: "text" },
-            { label: "Certificate Issue Date", name: "certificateIssueDate", type: "date" },
-            { label: "Training Centre", name: "trainingCentre", type: "text" },
+            {
+              label: "Roll No",
+              name: "rollNo",
+              type: "text",
+              placeholder: "Enter Roll Number",
+            },
+            {
+              label: "Full Name",
+              name: "name",
+              type: "text",
+              placeholder: "Enter Full Name",
+            },
+            {
+              label: "Father's Name",
+              name: "fatherName",
+              type: "text",
+              placeholder: "Enter Father's Name",
+            },
+            {
+              label: "Mother's Name",
+              name: "motherName",
+              type: "text",
+              placeholder: "Enter Mother's Name",
+            },
+            {
+              label: "Date of Birth",
+              name: "dateOfBirth",
+              type: "date",
+              placeholder: "",
+            },
+            {
+              label: "Aadhar Card Number",
+              name: "aadharCardNumber",
+              type: "text",
+              placeholder: "Enter 12-digit Aadhar Number",
+            },
+            {
+              label: "Enrolment Number",
+              name: "enrolmentNumber",
+              type: "text",
+              placeholder: "Enter Enrolment Number",
+            },
+
+            {
+              label: "Course Name",
+              name: "courseName",
+              type: "text",
+              placeholder: "Enter Course Name",
+            },
+            {
+              label: "Course Duration",
+              name: "courseDuration",
+              type: "text",
+              placeholder: "e.g. 6 Months / 1 Year",
+            },
+            {
+              label: "Total Obtained Marks",
+              name: "totalObtainedMarks",
+              type: "text",
+              placeholder: "e.g. 450/500",
+            },
+            {
+              label: "Overall Percentage",
+              name: "overallPercentage",
+              type: "text",
+              placeholder: "e.g. 80%",
+            },
+            {
+              label: "Grade",
+              name: "grade",
+              type: "text",
+              placeholder: "e.g. A+",
+            },
+            {
+              label: "Final Result",
+              name: "finalResult",
+              type: "text",
+              placeholder: "e.g. Pass / Fail",
+            },
+            {
+              label: "Certificate Issue Date",
+              name: "certificateIssueDate",
+              type: "date",
+              placeholder: "",
+            },
+            {
+              label: "Training Centre",
+              name: "trainingCentre",
+              type: "text",
+              placeholder: "Enter Training Centre Name",
+            },
           ].map((field) => (
-            <div key={field.name}>
+            <div key={field.name} className="mb-3">
               <label className="form-label">{field.label}</label>
               <input
                 onInput={(e) => handleChange(e.target.name, e.target.value)}
                 value={studentData[field.name] || ""}
                 name={field.name}
                 type={field.type}
+                placeholder={field.placeholder}
                 className={`form-control form-control-sm ${
                   errors[field.name] ? "is-invalid" : ""
                 }`}
@@ -185,7 +282,11 @@ const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListSho
             )}
           </div>
 
-          <button type="submit" className="btn btn-primary btn-sm" disabled={loading}>
+          <button
+            type="submit"
+            className="btn btn-primary btn-sm"
+            disabled={loading}
+          >
             {loading ? "Submitting..." : "Submit"}
           </button>
         </form>

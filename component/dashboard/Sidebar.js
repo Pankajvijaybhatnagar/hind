@@ -20,6 +20,11 @@ const Sidebar = () => {
       link: "/dashboard/students",
       icon: "fa-user-graduate",
     },
+    // {
+    //   name: "Contact Form",
+    //   link: "/dashboard/contact-us-form",
+    //   icon: "fa-envelope",
+    // },
   ];
 
   const router = useRouter();
