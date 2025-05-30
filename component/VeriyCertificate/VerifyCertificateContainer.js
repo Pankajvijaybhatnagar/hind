@@ -119,7 +119,13 @@ const VerifyCertificateContainer = ({ studentData }) => {
             </tr>
             <tr>
               <td>Certificate Diploma Issue Date</td>
-              <td>{studentData.certificateIssueDate}</td>
+              <td>
+              {studentData.certificateIssueDate
+      ? new Date(studentData.certificateIssueDate)
+          .toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+          .replace(' ', ', ')
+      : 'N/A'}
+              </td>
             </tr>
             <tr>
               <td>Authorized Study and Training Centre</td>
