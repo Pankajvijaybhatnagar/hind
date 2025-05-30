@@ -62,10 +62,10 @@ const FooterSection2 = ({ style, logo }) => {
                     <h3>Quick Links</h3>
                     <ul>
                       <li><Link href="/courses">Our Courses</Link></li>
-                      <li><Link href="/events">Upcoming Events</Link></li>
+                      <li><Link href="/">Upcoming Events</Link></li>
                       <li><Link href="/about">About Us</Link></li>
                       <li><Link href="/contact">Contact Us</Link></li>
-                      <li><Link href="/admission">Admission Process</Link></li>
+                      <li><Link href="#">Admission Process</Link></li>
                     </ul>
                   </div>
                 </div>
@@ -73,13 +73,13 @@ const FooterSection2 = ({ style, logo }) => {
                 <div className="col-xl-3 col-md-7 col-lg-3">
                   <div className="tf__footer_content">
                     <h3>Contact Information</h3>
-                    <p>Address: 123 Hindustan Road, New Delhi, India</p>
+                    {/* <p>Address: 123 Hindustan Road, New Delhi, India</p> */}
                     <p>
                       <span> Phone: +91 9876543210</span>
-                      <span>Email: info@hindustancouncil.edu.in</span>
+                      <span>Email: info@hcse.org.in</span>
                     </p>
                     <p>
-                      <span>Website: www.hindustancouncil.edu.in</span>
+                      <span>Website: www.hcse.org.in</span>
                     </p>
                   </div>
                 </div>
