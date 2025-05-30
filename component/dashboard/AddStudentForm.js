@@ -116,7 +116,7 @@ const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListSho
   return (
     <div style={{ maxWidth: "96%" }} className="row">
       <div className="col-md-2">
-        <div style={{ width: "150px", height: "150px", marginTop: "40px" }}>
+        <div className="shadow" style={{ width: "150px", height: "190px", marginTop: "40px" }}>
           <img
             src={avatarPreview}
             alt="Avatar Preview"

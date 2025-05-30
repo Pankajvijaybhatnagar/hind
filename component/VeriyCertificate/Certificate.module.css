@@ -17,13 +17,13 @@ margin: auto;
     /* border: 1px solid red; */
 }
 .photocontainer .studentavatar{
-    height: 300px !important;
-    width: auto;
-    aspect-ratio: 1/1;
+    height: 200px !important;
+    width: 150px;
+    
     object-fit: cover;
     
 }
-.stamp{
+.photocontainer .stamp{
     position: absolute;
     top: 50%;
     right: 50%;

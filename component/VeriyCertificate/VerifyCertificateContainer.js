@@ -36,16 +36,19 @@ const VerifyCertificateContainer = ({ studentData }) => {
             width={200}
             src={`${conf.apiBaseUri}/uploads/${studentData.avatar}`}
           />
+          
           <Image
-            height={100}
+            height={80}
             width={100}
-            className={Styles.stamp}
+            // className={Styles.stamp}
+            style={{position:"absolute",top:"50%" , right:"50%", padding:"40px 10px"}}
             src={"/images/stamp.png"}
           />
+          
         </div>
 
         {/* Personal Details */}
-        <div className="my-5"></div>
+        <div className="my-2"></div>
 
         <h5 className="mt-5">Personal Details</h5>
         <table className="table table-sm mt-3">
@@ -70,7 +73,7 @@ const VerifyCertificateContainer = ({ studentData }) => {
             </tr>
             <tr>
               <td>Aadhar Card No</td>
-              <td>{studentData.aadharCardNo}</td>
+              <td>{studentData.aadharCardNumber}</td>
             </tr>
           </tbody>
         </table>
