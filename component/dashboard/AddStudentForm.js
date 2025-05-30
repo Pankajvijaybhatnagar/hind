@@ -27,7 +27,7 @@ const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListSho
     const newErrors = {};
     const requiredFields = [
       "name", "fatherName", "motherName", "dateOfBirth", "aadharCardNumber",
-      "enrolmentNumber", "enrolmentDate", "courseName", "courseStatus", "academicDivision",
+      "enrolmentNumber", "rollNo", "courseName", 
       "courseDuration", "totalObtainedMarks", "overallPercentage", "grade", "finalResult",
       "certificateIssueDate", "trainingCentre"
     ];
@@ -131,16 +131,15 @@ const AddStudentForm = ({ studentData, setStudentData, getStudents, setIsListSho
           onSubmit={handleSubmit}
         >
           {[
+            { label: "Roll No", name: "rollNo", type: "text" },
             { label: "Full Name", name: "name", type: "text" },
             { label: "Father's Name", name: "fatherName", type: "text" },
             { label: "Mother's Name", name: "motherName", type: "text" },
             { label: "Date of Birth", name: "dateOfBirth", type: "date" },
             { label: "Aadhar Card Number", name: "aadharCardNumber", type: "text" },
             { label: "Enrolment Number", name: "enrolmentNumber", type: "text" },
-            { label: "Enrolment Date", name: "enrolmentDate", type: "date" },
+            
             { label: "Course Name", name: "courseName", type: "text" },
-            { label: "Course Status", name: "courseStatus", type: "text" },
-            { label: "Academic Division", name: "academicDivision", type: "text" },
             { label: "Course Duration", name: "courseDuration", type: "text" },
             { label: "Total Obtained Marks", name: "totalObtainedMarks", type: "text" },
             { label: "Overall Percentage", name: "overallPercentage", type: "text" },

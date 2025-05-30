@@ -15,7 +15,7 @@ const StudentsList = ({ students,handleEditStudent,currentPage,isLoading }) => {
             {/* <th scope="col">DOB</th> */}
             <th scope="col">Aadhar No</th>
             <th scope="col">Enrolment No</th>
-            <th scope="col">Enrolment date</th>
+            {/* <th scope="col">Enrolment date</th> */}
             <th scope="col">Course</th>
             <th scope="col">Course status</th>
             {/* <th scope="col">Academic division</th>
@@ -59,7 +59,7 @@ const StudentsList = ({ students,handleEditStudent,currentPage,isLoading }) => {
                   <td>{student.dateOfBirth}</td> */}
                   <td>{student.aadharCardNumber}</td>
                   <td>{student.enrolmentNumber}</td>
-                  <td>{student.enrolmentDate}</td>
+                  {/* <td>{student.enrolmentDate}</td> */}
                   <td>{student.courseName}</td>
                   <td>{student.courseStatus}</td>
                   {/* <td>{student.academicDivision}</td>
