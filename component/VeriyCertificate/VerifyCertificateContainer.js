@@ -84,25 +84,19 @@ const VerifyCertificateContainer = ({ studentData }) => {
           
           <tbody>
             <tr>
-              <td>Enrolment No</td>
-              <td>{studentData.enrolmentNo}</td>
+              <td>Roll No</td>
+              <td>{studentData.rollNo}</td>
             </tr>
             <tr>
-              <td>Enrolment Date</td>
-              <td>{studentData.enrolmentDate}</td>
+              <td>Enrolment No</td>
+              <td>{studentData.enrolmentNumber}</td>
             </tr>
+            
             <tr>
               <td>Course Name</td>
               <td>{studentData.courseName}</td>
             </tr>
-            <tr>
-              <td>Course Status</td>
-              <td>{studentData.courseStatus}</td>
-            </tr>
-            <tr>
-              <td>Academic Division</td>
-              <td>{studentData.academicDivision}</td>
-            </tr>
+            
             <tr>
               <td>Course Duration</td>
               <td>{studentData.courseDuration}</td>
