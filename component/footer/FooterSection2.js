@@ -61,11 +61,11 @@ const FooterSection2 = ({ style, logo }) => {
                   <div className="tf__footer_content">
                     <h3>Quick Links</h3>
                     <ul>
+                      <li><Link href="/">Home</Link></li>
                       <li><Link href="/courses">Our Courses</Link></li>
-                      <li><Link href="/">Upcoming Events</Link></li>
-                      <li><Link href="/about">About Us</Link></li>
+                      <li><Link href="/verify-certificate">Certificate verify</Link></li>
                       <li><Link href="/contact">Contact Us</Link></li>
-                      <li><Link href="#">Admission Process</Link></li>
+                      {/* <li><Link href="#">Admission Process</Link></li> */}
                     </ul>
                   </div>
                 </div>
