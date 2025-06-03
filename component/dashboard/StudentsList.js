@@ -1,32 +1,62 @@
-import React from "react";
-import Image from "next/image";
+import conf from "@/lib/config";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
-const StudentsList = ({ students,handleEditStudent,currentPage,isLoading }) => {
+const StudentsList = ({ students, handleEditStudent, currentPage, isLoading, getStudents }) => {
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [showDialog, setShowDialog] = useState(false);
+
+  const openConfirmDialog = (student) => {
+    setSelectedStudent(student);
+    setShowDialog(true);
+  };
+
+  const closeConfirmDialog = () => {
+    setShowDialog(false);
+    setSelectedStudent(null);
+  };
+
+  const handleDelete = async () => {
+    if (!selectedStudent) return;
+
+    try {
+      const response = await fetch(`${conf.apiBaseUri}/certificates`, {
+        method: 'DELETE',
+         headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Assuming you store token in localStorage
+          },
+        body:JSON.stringify({id:selectedStudent.id})
+      });
+
+      const result = await response.json();
+      console.log(result)
+
+      if (result.success) {
+        getStudents();
+        toast.success(result.message)
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      closeConfirmDialog();
+    }
+  };
+
   return (
     <div>
-      <table style={{fontSize: '0.85rem'}} className="table table-hover table-border table-sm table-responsive text-sm">
+      <table style={{ fontSize: '0.85rem' }} className="table table-hover table-border table-sm table-responsive text-sm">
         <thead>
           <tr>
-            <th scope="col">Sr</th>
-            {/* <th scope="col">Img</th> */}
-            <th scope="col">CandidateName</th>
-            <th scope="col">Father</th>
-            {/* <th scope="col">Mother</th> */}
-            {/* <th scope="col">DOB</th> */}
-            <th scope="col">Aadhar No</th>
-            <th scope="col">Enrolment No</th>
-            {/* <th scope="col">Enrolment date</th> */}
-            <th scope="col">Course</th>
-            <th scope="col">Course status</th>
-            {/* <th scope="col">Academic division</th>
-            <th scope="col">Course duration</th>
-            <th scope="col">Obtained Marks</th>
-            <th scope="col">Overall %</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Final Result</th> */}
-            <th scope="col">Cert issued on</th>
-            <th scope="col">Actions</th>
-            {/* <th scope="col">Training Center</th> */}
+            <th>Sr</th>
+            <th>CandidateName</th>
+            <th>Father</th>
+            <th>Aadhar No</th>
+            <th>Enrolment No</th>
+            <th>Course</th>
+            <th>Course status</th>
+            <th>Cert issued on</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -42,43 +72,22 @@ const StudentsList = ({ students,handleEditStudent,currentPage,isLoading }) => {
             ) : (
               students.map((student, i) => (
                 <tr key={i}>
-                  {/* <th scope="row">{i + 1}</th> */}
-                  <th scope="row">{(currentPage-1 )*10+i+1}</th>
-                  {/* <td>
-                    <Image
-                      src={student.avatar.startsWith('/') ? student.avatar : `/images/${student.avatar}`}
-                      alt="avatar"
-                      width={30}
-                      height={30}
-                      style={{ objectFit: 'cover', borderRadius: '5px' }}
-                    />
-                  </td> */}
+                  <th>{(currentPage - 1) * 10 + i + 1}</th>
                   <td>{student.name}</td>
                   <td>{student.fatherName}</td>
-                  {/* <td>{student.motherName}</td>
-                  <td>{student.dateOfBirth}</td> */}
                   <td>{student.aadharCardNumber}</td>
                   <td>{student.enrolmentNumber}</td>
-                  {/* <td>{student.enrolmentDate}</td> */}
                   <td>{student.courseName}</td>
                   <td>{student.courseStatus}</td>
-                  {/* <td>{student.academicDivision}</td>
-                  <td>{student.courseDuration}</td>
-                  <td>{student.totalObtainedMarks}</td>
-                  <td>{student.overallPercentage}</td>
-                  <td>{student.grade}</td>
-                  <td>{student.finalResult}</td> */}
                   <td>{student.certificateIssueDate}</td>
                   <td>
-    
                     <button onClick={() => handleEditStudent(student)} className="btn btn-success btn-sm me-1">
                       <i className="fa fa-edit"></i>
                     </button>
-                    <button className="btn btn-danger btn-sm">
+                    <button onClick={() => openConfirmDialog(student)} className="btn btn-danger btn-sm">
                       <i className="fa fa-trash"></i>
                     </button>
                   </td>
-                  {/* <td>{student.trainingCentre}</td> */}
                 </tr>
               ))
             )
@@ -86,7 +95,66 @@ const StudentsList = ({ students,handleEditStudent,currentPage,isLoading }) => {
         </tbody>
       </table>
 
+      {showDialog && (
+        <div className="custom-modal-backdrop">
+          <div className="custom-modal">
+            <div className="custom-modal-header">
+              <h5>Confirm Delete</h5>
+            </div>
+            <div className="custom-modal-body">
+              Are you sure you want to delete <strong>{selectedStudent?.name}</strong>?
+            </div>
+            <div className="custom-modal-footer">
+              <button className="btn btn-secondary" onClick={closeConfirmDialog}>Cancel</button>
+              <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
 
+      <style jsx>{`
+        .custom-modal-backdrop {
+          position: fixed;
+          top: 0; left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1050;
+        }
+
+        .custom-modal {
+          background: white;
+          border-radius: 6px;
+          width: 90%;
+          max-width: 400px;
+          box-shadow: 0 0 15px rgba(0,0,0,0.3);
+          animation: fadeIn 0.2s ease-out;
+        }
+
+        .custom-modal-header, .custom-modal-footer {
+          padding: 1rem;
+          border-bottom: 1px solid #dee2e6;
+        }
+
+        .custom-modal-footer {
+          border-top: none;
+          display: flex;
+          justify-content: flex-end;
+          gap: 0.5rem;
+        }
+
+        .custom-modal-body {
+          padding: 1rem;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 };

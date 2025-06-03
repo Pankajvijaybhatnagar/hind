@@ -111,7 +111,8 @@ const AddStudentForm = ({
         },
         body: JSON.stringify(payload),
       });
-
+      
+      console.log(JSON.stringify(payload))
       const data = await response.json();
       if (data.success) {
         toast.success(data.message);
@@ -126,6 +127,7 @@ const AddStudentForm = ({
       }
     } catch (error) {
       toast.error(error.message || "An error occurred");
+      console.log(error)
     } finally {
       setLoading(false);
     }
