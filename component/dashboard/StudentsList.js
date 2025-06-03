@@ -78,7 +78,7 @@ const StudentsList = ({ students, handleEditStudent, currentPage, isLoading, get
                   <td>{student.aadharCardNumber}</td>
                   <td>{student.enrolmentNumber}</td>
                   <td>{student.courseName}</td>
-                  <td>{student.courseStatus}</td>
+                  <td>{student.finalResult}</td>
                   <td>{student.certificateIssueDate}</td>
                   <td>
                     <button onClick={() => handleEditStudent(student)} className="btn btn-success btn-sm me-1">
