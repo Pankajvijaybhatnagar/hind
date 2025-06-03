@@ -28,8 +28,8 @@ const ContactPageSection = () => {
                 </div>
                 <div className="text">
                   <h3>Call</h3>
-                  <a href="callto:+880254615566">+880254615566</a>
-                  <a href="callto:+826542556455">+826542556455</a>
+                  <a href="callto:+91 90687 86101">+91 90687 86101</a>
+                  {/* <a href="callto:+826542556455">+826542556455</a> */}
                 </div>
               </div>
               <div className="tf__contact_single">
@@ -38,8 +38,8 @@ const ContactPageSection = () => {
                 </div>
                 <div className="text">
                   <h3>Mail</h3>
-                  <a href="mailto:neta@eobi.com">neta@eobi.com</a>
-                  <a href="mailto:coraty@bara.com">coraty@bara.com</a>
+                  <a href="mailto:info@hcse.org.in">info@hcse.org.in</a>
+                  {/* <a href="mailto:coraty@bara.com">coraty@bara.com</a> */}
                 </div>
               </div>
               <div className="tf__contact_single">
@@ -57,7 +57,7 @@ const ContactPageSection = () => {
           <div className="col-xl-12 wow fadeInUp">
             <div className="tf__contact_map mt_100">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29199.78758207035!2d90.43684581929195!3d23.819543211524437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c62fce7d991f%3A0xacfaf1ac8e944c05!2sBasundhara%20Residential%20Area%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1667021568123!5m2!1sen!2sbd"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27598.00603246016!2d77.29925049999999!3d30.158541249999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390efbee3dc0d0eb%3A0xf105c50233e747d2!2sJagadhri%2C%20Haryana!5e0!3m2!1sen!2sin!4v1748943066098!5m2!1sen!2sin"
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
