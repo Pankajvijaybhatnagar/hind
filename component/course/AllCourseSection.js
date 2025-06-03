@@ -34,22 +34,15 @@ const AllCourseSection = () => {
                   <a className={`categories ${item.color}`} href="#">
                     {item.category}
                   </a>
-                  <span>{item.price}</span>
+                  {/* <span>{item.price}</span> */}
                 </div>
-                <ul className="tf__single_course_header">
-                  <li>
-                    <i className="fas fa-user"></i> {item.instructor}
-                  </li>
-                  <li>
-                    <i className="fas fa-folder-open"></i> {item.lessons}
-                  </li>
-                </ul>
+                
                 <div className="tf__single_courses_text">
-                  <Link className="title" href={`/courses/${item.slug}`}>
+                  <Link className="title" href={`/contact`}>
                     {item.title}
                   </Link>
                   <p className="description">{item.description}</p>
-                  <ul>
+                  {/* <ul>
                     <li>
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>
@@ -59,8 +52,16 @@ const AllCourseSection = () => {
                       <span>(0{item.rating})</span>
                     </li>
                     <li>{item.students}</li>
-                  </ul>
+                  </ul> */}
                 </div>
+                <ul className="tf__single_course_header">
+                  <li>
+                    <b>Duration : </b> {item.duration}
+                  </li>
+                  {/* <li>
+                    <i className="fas fa-folder-open"></i> {item.lessons}
+                  </li> */}
+                </ul>
               </div>
             </div>
           ))}
