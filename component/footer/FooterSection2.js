@@ -17,9 +17,9 @@ const FooterSection2 = ({ style, logo }) => {
             <p>
               Join Hindustan Council of Secondary Education for a transformative educational journey. Empowering students for a brighter future.
             </p>
-            <a className="apply_btn" href="#">
-              Enroll Now
-            </a>
+            <Link className="apply_btn" href="/courses">
+              Enroll Now 
+            </Link>
           </div>
         </div>
       </div>

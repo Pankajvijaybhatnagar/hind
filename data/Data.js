@@ -540,39 +540,45 @@ const services = [
   {
     id: 0,
     iClassName: "fa fa-book",
-    title: "Exclusive Man",
-    desc: "Get exclusive handyman services for your home in London.",
+    title: "English Courses",
+    desc: "Improve your communication, interview skills, and confidence in English.",
     color: "red",
+    category: "English",
   },
   {
     id: 1,
-    iClassName: "fa fa-palette",
-    title: "UI/UX Design",
-    desc: "Transform your digital user experience with our design expertise.",
+    iClassName: "fa fa-desktop",
+    title: "Computer Training",
+    desc: "Master computers, applications, data entry, and networking with our practical courses.",
     color: "gray",
+    category: "Computer",
   },
   {
     id: 2,
     iClassName: "fa fa-pencil-ruler",
-    title: "Graphic Design",
-    desc: "Create stunning visuals and graphics for your brand or project.",
+    title: "Graphic & UI/UX Design",
+    desc: "Learn Photoshop, Illustrator, and more to design visually stunning content.",
     color: "green",
+    category: "Design",
   },
   {
     id: 3,
-    iClassName: "fa fa-analytics",
+    iClassName: "fa fa-chart-line",
     title: "Digital Marketing",
-    desc: "Boost your online presence and reach with our digital marketing strategies.",
+    desc: "Master SEO, SMM, Google Ads, and email marketing to grow online businesses.",
     color: "blue",
+    category: "Digital Marketing",
   },
   {
     id: 4,
-    iClassName: "fa fa-pencil-paintbrush",
-    title: "Product Design",
-    desc: "Bring your product ideas to life with our innovative design solutions.",
+    iClassName: "fa fa-video",
+    title: "Video Editing & Filmmaking",
+    desc: "Edit videos, learn cinematography, mobile editing, and motion graphics like a pro.",
     color: "orange",
-  },
+    category: "Video Editing",
+  }
 ];
+
 
 const courseDataArray = [
   {
@@ -1140,34 +1146,35 @@ const activitiesData = [
   {
     id: 0,
     color: "light_blue",
-    iClassName: "fa fa-book",
-    title: "Parenting Bill",
+    iClassName: "fa fa-language",
+    title: "English Communication",
   },
   {
     id: 1,
     color: "green",
-    iClassName: "fa fa-graduation-cap",
-    title: "Engineering",
+    iClassName: "fa fa-desktop",
+    title: "Computer Training",
   },
   {
     id: 2,
     color: "orange",
-    iClassName: "fa fa-university",
-    title: "Sports Training",
+    iClassName: "fa fa-pencil-ruler",
+    title: "Design & Creativity",
   },
   {
     id: 3,
     color: "blue",
-    iClassName: "fa fa-books-medical",
-    title: "School Directly",
+    iClassName: "fa fa-video",
+    title: "Video Production",
   },
   {
     id: 4,
     color: "green",
-    iClassName: "fa fa-analytics",
+    iClassName: "fa fa-chart-line",
     title: "Digital Marketing",
-  },
+  }
 ];
+
 
 export {
   eventData,
