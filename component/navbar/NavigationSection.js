@@ -14,9 +14,7 @@ const NavigationSection = ({ position, btnPosition, navRef }) => {
     >
       <ul className={`navbar-nav ${position}`}>
         <li className="nav-item">
-          <a className="nav-link">
-            Home 
-          </a>
+          <Navlink href="/">Home</Navlink>
           {/* <ul className="tf__droap_menu">
             <li>
               <SubNavlink href="/">home 1</SubNavlink>
@@ -29,17 +27,17 @@ const NavigationSection = ({ position, btnPosition, navRef }) => {
             </li>
           </ul> */}
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Navlink href="/">about us</Navlink>
-        </li>
+        </li> */}
         <li className="nav-item">
-          <Navlink href="/">courses</Navlink>
+          <Navlink href="/courses">courses</Navlink>
         </li>
         <li className="nav-item">
           <Navlink href="/verify-certificate">Verify Certificate</Navlink>
         </li>
         <li className="nav-item">
-          <Navlink href="/">Contact us</Navlink>
+          <Navlink href="/contact">Contact us</Navlink>
         </li>
         <li className="nav-item">
           {/* <a className="nav-link">

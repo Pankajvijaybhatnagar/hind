@@ -9,13 +9,13 @@ const ContactPageSection = () => {
           <div className="col-xxl-8 col-xl-7 col-lg-6 wow fadeInLeft">
             <div className="tf__contact_form">
               <div className="tf__heading_area tf__heading_area_left mb_25">
-                <h5>OUR contact Us</h5>
-                <h2>Get Our Contact Now.</h2>
+                <h5>Contact Us</h5>
+                <h2>We Provide the Best Secondary Education.</h2>
               </div>
               <p>
-                Promote your blog posts, case udie, and product ouncems with the
-                the branded videoscustomers coming back for services Makes best
-                effort.
+                Our council is committed to delivering high-quality secondary
+                education through well-designed courses and a dedicated team of
+                educators.
               </p>
               <ContactForm />
             </div>
@@ -34,21 +34,21 @@ const ContactPageSection = () => {
               </div>
               <div className="tf__contact_single">
                 <div className="icon orange">
-                  <i className="fas fa-phone-alt"></i>
+                  <i className="fas fa-envelope"></i>
                 </div>
                 <div className="text">
-                  <h3>mail</h3>
+                  <h3>Mail</h3>
                   <a href="mailto:neta@eobi.com">neta@eobi.com</a>
                   <a href="mailto:coraty@bara.com">coraty@bara.com</a>
                 </div>
               </div>
               <div className="tf__contact_single">
                 <div className="icon green">
-                  <i className="fas fa-phone-alt"></i>
+                  <i className="fas fa-map-marker-alt"></i>
                 </div>
                 <div className="text">
-                  <h3>address</h3>
-                  <p>52, 25 rangpur,0123 Ratrba baraj,20</p>
+                  <h3>Address</h3>
+                  <p>Yamunanagar</p>
                 </div>
               </div>
             </div>
