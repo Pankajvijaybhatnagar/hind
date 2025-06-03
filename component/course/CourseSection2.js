@@ -21,7 +21,7 @@ const CourseSection2 = () => {
                 <div className="tf__single_courses_img">
                   <img
                     src={item.imgSrc}
-                    alt={item.title}
+                    alt="courses"
                     className="img-fluid w-100"
                   />
                   <a className={`categories ${item.color}`} href="#">
@@ -29,22 +29,13 @@ const CourseSection2 = () => {
                   </a>
                   {/* <span>{item.price}</span> */}
                 </div>
-                <ul className="tf__single_course_header">
-                  <li>
-                    <i className="fas fa-user"></i> {item.instructor}
-                  </li>
-                  <li>
-                    <i className="fas fa-folder-open"></i> {item.lessons}
-                  </li>
-                </ul>
+                
                 <div className="tf__single_courses_text">
-                  <Link className="title" href={`/`}>
+                  <Link className="title" href={`/contact`}>
                     {item.title}
                   </Link>
-
-
                   <p className="description">{item.description}</p>
-                  <ul>
+                  {/* <ul>
                     <li>
                       <i className="fas fa-star"></i>
                       <i className="fas fa-star"></i>
@@ -54,11 +45,22 @@ const CourseSection2 = () => {
                       <span>(0{item.rating})</span>
                     </li>
                     <li>{item.students}</li>
-                  </ul>
+                  </ul> */}
                 </div>
+                <ul className="tf__single_course_header">
+                  <li>
+                    <b>Duration : </b> {item.duration}
+                  </li>
+                  {/* <li>
+                    <i className="fas fa-folder-open"></i> {item.lessons}
+                  </li> */}
+                </ul>
               </div>
             </div>
           ))}
+        </div>
+        <div className="text-center my-4">
+          <Link className="btn btn-warning rounded-pill px-5 py-3" href={'/courses'} >All Courses</Link>
         </div>
       </div>
     </section>
