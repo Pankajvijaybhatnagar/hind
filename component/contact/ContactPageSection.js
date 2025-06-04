@@ -22,27 +22,27 @@ const ContactPageSection = () => {
           </div>
           <div className="col-xxl-4 col-xl-5 col-lg-6 wow fadeInRight">
             <div className="tf__contact_text">
-              <div className="tf__contact_single">
+              {/* <div className="tf__contact_single">
                 <div className="icon blue">
                   <i className="fas fa-phone-alt"></i>
                 </div>
                 <div className="text">
                   <h3>Call</h3>
                   <a href="callto:+91 90687 86101">+91 90687 86101</a>
-                  {/* <a href="callto:+826542556455">+826542556455</a> */}
+                  
                 </div>
-              </div>
+              </div> */}
               <div className="tf__contact_single">
                 <div className="icon orange">
                   <i className="fas fa-envelope"></i>
                 </div>
                 <div className="text">
-                  <h3>Mail</h3>
+                  <h3>Mail us on</h3>
                   <a href="mailto:info@hcse.org.in">info@hcse.org.in</a>
                   {/* <a href="mailto:coraty@bara.com">coraty@bara.com</a> */}
                 </div>
               </div>
-              <div className="tf__contact_single">
+              {/* <div className="tf__contact_single">
                 <div className="icon green">
                   <i className="fas fa-map-marker-alt"></i>
                 </div>
@@ -50,7 +50,7 @@ const ContactPageSection = () => {
                   <h3>Address</h3>
                   <p>Yamunanagar</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
