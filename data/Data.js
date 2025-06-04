@@ -585,6 +585,24 @@ const courseDataArray = [
     id: 0,
     imgSrc: "/images/c1.png",
     color: "orange",
+    slug: "english-communication-development",
+    title: "English Communication Development",
+    category: "English",
+    price: "$49.00",
+    instructor: "TBD",
+    lessons: "20 lessons",
+    duration: "3 months",
+    description: "Learn: Speaking fluently, vocabulary building, listening skills, interactive activities",
+    rating: 4,
+    students: "40+ students",
+    instructorImg: "images/team_1.jpg",
+    review: 10,
+    date: "01 Jan 2025",
+  },
+  {
+    id: 1,
+    imgSrc: "/images/c1.png",
+    color: "orange",
     slug: "spoken-english-course",
     title: "Spoken English Course",
     category: "English",
@@ -600,7 +618,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 1,
+    id: 2,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "english-communication-skills",
@@ -618,7 +636,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 2,
+    id: 3,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "english-for-interview-and-job-preparation",
@@ -636,7 +654,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 3,
+    id: 4,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "personality-development-with-english",
@@ -654,7 +672,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 4,
+    id: 5,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "basic-computer-course-bcc-ccc",
@@ -672,7 +690,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 5,
+    id: 6,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "diploma-in-computer-applications-dca",
@@ -690,7 +708,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 6,
+    id: 7,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "tally-with-gst",
@@ -708,7 +726,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 7,
+    id: 8,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "graphic-designing",
@@ -726,7 +744,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 8,
+    id: 9,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "web-designing-web-development",
@@ -744,7 +762,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 9,
+    id: 10,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "computer-hardware-and-networking",
@@ -762,7 +780,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 10,
+    id: 11,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "data-entry-operator-course",
@@ -780,7 +798,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 11,
+    id: 12,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "digital-marketing-fundamentals",
@@ -798,7 +816,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 12,
+    id: 13,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "seo-search-engine-optimization",
@@ -816,7 +834,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 13,
+    id: 14,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "social-media-marketing-smm",
@@ -834,7 +852,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 14,
+    id: 15,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "google-ads-and-ppc",
@@ -852,7 +870,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 15,
+    id: 16,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "content-marketing-and-blogging",
@@ -870,7 +888,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 16,
+    id: 17,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "email-marketing-and-automation",
@@ -888,7 +906,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 17,
+    id: 18,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "complete-digital-marketing-course",
@@ -906,7 +924,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 18,
+    id: 19,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "video-editing-course",
@@ -924,7 +942,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 19,
+    id: 20,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "cinematography-course",
@@ -942,7 +960,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 20,
+    id: 21,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "filmmaking-basics-course",
@@ -960,7 +978,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 21,
+    id: 22,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "mobile-video-editing-course",
@@ -978,7 +996,7 @@ const courseDataArray = [
     date: "01 Jan 2025",
   },
   {
-    id: 22,
+    id: 23,
     imgSrc: "/images/c1.png",
     color: "orange",
     slug: "motion-graphics-and-vfx",
