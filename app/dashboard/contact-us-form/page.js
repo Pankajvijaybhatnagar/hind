@@ -1,13 +1,17 @@
 "use client";
 
 import InquiryList from '@/component/dashboard/InquiryList';
+import Pagination from '@/context/Pagination';
 import conf from '@/lib/config';
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [inquiries, setInquiries] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalRecords, setTotalRecords] = useState(0);
   const [filters, setFilters] = useState({
     name: '',
     email: '',
@@ -25,7 +29,7 @@ const Page = () => {
       const url = `${conf.apiBaseUri}/inquiries?page=${currentPage}&${query}`
       console.log(url)
       const response = await fetch(
-       url,
+        url,
         {
           method: "GET",
           headers: {
@@ -40,7 +44,11 @@ const Page = () => {
       }
 
       const data = await response.json();
+      console.log(data)
       setInquiries(data.data);
+      setCurrentPage(data.pagination.currentPage)
+      setTotalPages(data.pagination.totalPages)
+      setTotalRecords(data.pagination.totalRecords)
     } catch (error) {
       console.error("Error fetching inquiries:", error);
     } finally {
@@ -58,14 +66,58 @@ const Page = () => {
       ...prevFilters,
       [name]: value,
     }));
+    setCurrentPage(1)
   };
 
-  const handleEdit = (updatedInquiry) => {
+  const onEdit = async (updatedInquiry) => {
     // Logic to update the inquiry
-};
-const handleDelete = (id) => {
-    // Logic to delete the inquiry
-};
+    try {
+      const response = await fetch(`${conf.apiBaseUri}/inquiries`, {
+        method: 'PUT', // Use PUT for updating
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(updatedInquiry)
+      });
+
+      const result = await response.json();
+      console.log("Response from update:", result);
+      if (result.success) {
+        toast.success(result.message)
+        getInquiry()
+      } else {
+        toast.error(result.error)
+      }
+    } catch (error) {
+      console.log("Error updating inquiry:", error);
+    }
+  };
+
+
+
+  const onDelete = async (id) => {
+    try {
+      const response = await fetch(`${conf.apiBaseUri}/inquiries`, {
+        method: 'DELETE',
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ id: id })
+      })
+      const result = await response.json();
+      console.log("Response from update:", result);
+      if (result.success) {
+        toast.success(result.message)
+        getInquiry()
+      } else {
+        toast.error(result.error)
+      }
+    } catch (error) {
+      console.log("error deleting inquiry:", error)
+    }
+  };
 
   return (
     <div>
@@ -110,25 +162,23 @@ const handleDelete = (id) => {
       {isLoading ? (
         <p>Loading inquiries...</p>
       ) : (
-        <InquiryList inquiries={inquiries} />
-      )}
+        <>
 
-      <div className="d-flex justify-content-between align-items-center mt-3">
-        <button
-          className="btn btn-sm btn-outline-primary"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <span>Page {currentPage}</span>
-        <button
-          className="btn btn-sm btn-outline-primary"
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-        >
-          Next
-        </button>
-      </div>
+          <InquiryList inquiries={inquiries} onEdit={onEdit} onDelete={onDelete} currentPage={currentPage} />
+
+        </>
+
+      )}
+      <span className="d-flex justify-content-between align-items-center">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
+        <span>
+          Showing {inquiries.length}/{totalRecords} students
+        </span>
+      </span>
     </div>
   );
 };

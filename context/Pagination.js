@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 
 const Pagination = ({ currentPage = 2, totalPages = 5, setCurrentPage }) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InquiryList = ({ inquiries, onEdit, onDelete }) => {
+const InquiryList = ({ inquiries, onEdit, onDelete,currentPage }) => {
   const [selectedInquiry, setSelectedInquiry] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -48,7 +48,7 @@ const InquiryList = ({ inquiries, onEdit, onDelete }) => {
         <tbody>
           {inquiries.map((inquiry, index) => (
             <tr key={inquiry.id}>
-              <td>{index + 1}</td>
+              <td>{ (currentPage-1)*10 +  index + 1}</td>
               <td>{inquiry.name}</td>
               <td>{inquiry.mobile}</td>
               <td>{inquiry.email}</td>
@@ -61,18 +61,18 @@ const InquiryList = ({ inquiries, onEdit, onDelete }) => {
               <td>{inquiry.remark || 'N/A'}</td>
               <td>
                 <button
-                  className="btn btn-sm btn-primary me-2"
+                  className="btn btn-sm btn-primary me-2 btn-sm m-0 py-1 px-2"
                   onClick={() => handleEditClick(inquiry)}
                   aria-label={`Edit inquiry ${inquiry.name}`}
                 >
-                  Edit
+                  <i className="fa fa-edit"></i>
                 </button>
                 <button
-                  className="btn btn-sm btn-danger"
+                  className="btn btn-sm btn-danger btn-sm py-1 px-2"
                   onClick={() => handleDeleteClick(inquiry)}
                   aria-label={`Delete inquiry ${inquiry.name}`}
                 >
-                  Delete
+                  <i className="fa fa-trash"></i>
                 </button>
               </td>
             </tr>
@@ -91,46 +91,96 @@ const InquiryList = ({ inquiries, onEdit, onDelete }) => {
                 onEdit(selectedInquiry);
                 handleCloseModal();
               }}
+              className="modal-form"
             >
-              <label htmlFor="edit-name" className="modal-label">Name:</label>
-              <input
-                id="edit-name"
-                type="text"
-                className="modal-input"
-                value={selectedInquiry.name}
-                onChange={(e) => setSelectedInquiry({ ...selectedInquiry, name: e.target.value })}
-                required
-              />
+              <div className="modal-inputs">
+                <div className="modal-input-group">
+                  <label htmlFor="edit-name" className="modal-label">Name:</label>
+                  <input
+                    id="edit-name"
+                    type="text"
+                    className="modal-input"
+                    value={selectedInquiry.name}
+                    onChange={(e) => setSelectedInquiry({ ...selectedInquiry, name: e.target.value })}
+                    required
+                  />
 
-              <label htmlFor="edit-mobile" className="modal-label">Mobile:</label>
-              <input
-                id="edit-mobile"
-                type="text"
-                className="modal-input"
-                value={selectedInquiry.mobile}
-                onChange={(e) => setSelectedInquiry({ ...selectedInquiry, mobile: e.target.value })}
-                required
-              />
+                  <label htmlFor="edit-mobile" className="modal-label">Mobile:</label>
+                  <input
+                    id="edit-mobile"
+                    type="text"
+                    className="modal-input"
+                    value={selectedInquiry.mobile}
+                    onChange={(e) => setSelectedInquiry({ ...selectedInquiry, mobile: e.target.value })}
+                    required
+                  />
 
-              <label htmlFor="edit-email" className="modal-label">Email:</label>
-              <input
-                id="edit-email"
-                type="email"
-                className="modal-input"
-                value={selectedInquiry.email}
-                onChange={(e) => setSelectedInquiry({ ...selectedInquiry, email: e.target.value })}
-                required
-              />
+                  <label htmlFor="edit-email" className="modal-label">Email:</label>
+                  <input
+                    id="edit-email"
+                    type="email"
+                    className="modal-input"
+                    value={selectedInquiry.email}
+                    onChange={(e) => setSelectedInquiry({ ...selectedInquiry, email: e.target.value })}
+                    required
+                  />
 
-              <label htmlFor="edit-message" className="modal-label">Message:</label>
-              <textarea
-                id="edit-message"
-                className="modal-textarea"
-                value={selectedInquiry.message}
-                onChange={(e) => setSelectedInquiry({ ...selectedInquiry, message: e.target.value })}
-                rows={4}
-                required
-              />
+                  <label htmlFor="edit-remark" className="modal-label">Remark:</label>
+                  <textarea
+                    id="edit-remark"
+                    type="text"
+                    className="modal-textarea"
+                    value={selectedInquiry.remark || ''}
+                    rows={4}
+                    onChange={(e) => setSelectedInquiry({ ...selectedInquiry, remark: e.target.value })}
+                  />
+                </div>
+
+                <div className="modal-input-group">
+                  <label htmlFor="edit-location" className="modal-label">Location: (district , state)</label>
+                  <input
+                    id="edit-location"
+                    type="text"
+                    className="modal-input"
+                    value={`${selectedInquiry.district}, ${selectedInquiry.state}`}
+                    onChange={(e) => {
+                      const [district, state] = e.target.value.split(', ');
+                      setSelectedInquiry({ ...selectedInquiry, district, state });
+                    }}
+                    required
+                  />
+
+                  <label htmlFor="edit-education" className="modal-label">Education:</label>
+                  <input
+                    id="edit-education"
+                    type="text"
+                    className="modal-input"
+                    value={selectedInquiry.education}
+                    onChange={(e) => setSelectedInquiry({ ...selectedInquiry, education: e.target.value })}
+                    required
+                  />
+
+                  <label htmlFor="edit-course" className="modal-label">Course:</label>
+                  <input
+                    id="edit-course"
+                    type="text"
+                    className="modal-input"
+                    value={selectedInquiry.course}
+                    onChange={(e) => setSelectedInquiry({ ...selectedInquiry, course: e.target.value })}
+                    required
+                  />
+
+                  <label htmlFor="edit-message" className="modal-label">Message:</label>
+                  <textarea
+                    id="edit-message"
+                    className="modal-textarea"
+                    value={selectedInquiry.message}
+                    onChange={(e) => setSelectedInquiry({ ...selectedInquiry, message: e.target.value })}
+                    rows={4}
+                    required
+                  />
+                </div>
+              </div>
 
               <div className="modal-actions">
                 <button type="submit" className="btn btn-primary me-2">
@@ -197,7 +247,6 @@ const InquiryList = ({ inquiries, onEdit, onDelete }) => {
           animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           color: #374151;
-          
         }
 
         .modal-title {
@@ -215,9 +264,19 @@ const InquiryList = ({ inquiries, onEdit, onDelete }) => {
           font-size: 0.9rem;
         }
 
+        .modal-inputs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .modal-input-group {
+          flex: 1 1 45%; /* Two columns */
+        }
+
         .modal-input,
         .modal-textarea {
-          flex:1 0 200px;
+          flex: 1 0 200px;
           padding: 0.3rem 0.5rem;
           border: 1px solid #d1d5db;
           border-radius: 0.5rem;
