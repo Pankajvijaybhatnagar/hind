@@ -3,6 +3,7 @@
 import InquiryList from '@/component/dashboard/InquiryList';
 import Pagination from '@/context/Pagination';
 import conf from '@/lib/config';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
@@ -19,6 +20,8 @@ const Page = () => {
     mobile: '',
     district: '',
   });
+
+const router = useRouter()
 
   const getInquiry = async () => {
     setIsLoading(true);
@@ -51,6 +54,9 @@ const Page = () => {
       setTotalRecords(data.pagination.totalRecords)
     } catch (error) {
       console.error("Error fetching inquiries:", error);
+      localStorage.removeItem('token')
+      router.push('/login')
+      
     } finally {
       setIsLoading(false);
     }
