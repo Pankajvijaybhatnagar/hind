@@ -33,7 +33,7 @@ const Page = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCardData(data);
     } catch (error) {
       console.log("Error fetching analytic", error);
