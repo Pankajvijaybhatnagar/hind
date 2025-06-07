@@ -49,7 +49,7 @@ const router = useRouter()
       const data = await response.json();
       console.log(data)
       setInquiries(data.data);
-      setCurrentPage(data.pagination.currentPage)
+      setCurrentPage((data.pagination.currentPage ===0)?1:data.pagination.currentPage)
       setTotalPages(data.pagination.totalPages)
       setTotalRecords(data.pagination.totalRecords)
     } catch (error) {
@@ -175,6 +175,7 @@ const router = useRouter()
         </>
 
       )}
+      
       <span className="d-flex justify-content-between align-items-center">
         <Pagination
           currentPage={currentPage}

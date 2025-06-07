@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InquiryList = ({ inquiries, onEdit, onDelete,currentPage }) => {
+const InquiryList = ({ inquiries, onEdit, onDelete, currentPage }) => {
   const [selectedInquiry, setSelectedInquiry] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -46,38 +46,47 @@ const InquiryList = ({ inquiries, onEdit, onDelete,currentPage }) => {
           </tr>
         </thead>
         <tbody>
-          {inquiries.map((inquiry, index) => (
-            <tr key={inquiry.id}>
-              <td>{ (currentPage-1)*10 +  index + 1}</td>
-              <td>{inquiry.name}</td>
-              <td>{inquiry.mobile}</td>
-              <td>{inquiry.email}</td>
-              <td>
-                {inquiry.district}, {inquiry.state}
-              </td>
-              <td>{inquiry.education}</td>
-              <td>{inquiry.course}</td>
-              <td>{inquiry.message}</td>
-              <td>{inquiry.remark || 'N/A'}</td>
-              <td>
-                <button
-                  className="btn btn-sm btn-primary me-2 btn-sm m-0 py-1 px-2"
-                  onClick={() => handleEditClick(inquiry)}
-                  aria-label={`Edit inquiry ${inquiry.name}`}
-                >
-                  <i className="fa fa-edit"></i>
-                </button>
-                <button
-                  className="btn btn-sm btn-danger btn-sm py-1 px-2"
-                  onClick={() => handleDeleteClick(inquiry)}
-                  aria-label={`Delete inquiry ${inquiry.name}`}
-                >
-                  <i className="fa fa-trash"></i>
-                </button>
+          {inquiries.length === 0 ? (
+            <tr>
+              <td colSpan="10" className="text-center">
+                No inquiries available
               </td>
             </tr>
-          ))}
+          ) : (
+            inquiries.map((inquiry, index) => (
+              <tr key={inquiry.id}>
+                <td>{(currentPage - 1) * 10 + index + 1}</td>
+                <td>{inquiry.name}</td>
+                <td>{inquiry.mobile}</td>
+                <td>{inquiry.email}</td>
+                <td>
+                  {inquiry.district}, {inquiry.state}
+                </td>
+                <td>{inquiry.education}</td>
+                <td>{inquiry.course}</td>
+                <td>{inquiry.message}</td>
+                <td>{inquiry.remark || 'N/A'}</td>
+                <td>
+                  <button
+                    className="btn btn-sm btn-primary me-2 btn-sm m-0 py-1 px-2"
+                    onClick={() => handleEditClick(inquiry)}
+                    aria-label={`Edit inquiry ${inquiry.name}`}
+                  >
+                    <i className="fa fa-edit"></i>
+                  </button>
+                  <button
+                    className="btn btn-sm btn-danger btn-sm py-1 px-2"
+                    onClick={() => handleDeleteClick(inquiry)}
+                    aria-label={`Delete inquiry ${inquiry.name}`}
+                  >
+                    <i className="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
+
       </table>
 
       {/* Edit Modal */}
