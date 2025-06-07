@@ -3,10 +3,14 @@
 
 import Cards from '@/component/dashboard/Cards'
 import conf from '@/lib/config'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const page = () => {
+
   const[cardData,setCardData]=useState([])
+
+  const router = useRouter;
 
   const getAnalytic = async () => {
     try {
