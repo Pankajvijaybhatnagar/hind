@@ -1,13 +1,40 @@
 
+"use client"
+
 import Cards from '@/component/dashboard/Cards'
-import React from 'react'
+import conf from '@/lib/config'
+import React, { useEffect, useState } from 'react'
 
 const page = () => {
+  const[cardData,setCardData]=useState([])
+
+  const getAnalytic = async () => {
+    try {
+      const response = await fetch(`${conf.apiBaseUri}/analytics`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Assuming you store token in localStorage
+        },
+      })
+      const data = await response.json();
+      console.log(data)
+     setCardData(data)
+    } catch (error) {
+      console.log("Error fetching analytic",error)
+    }
+  }
+
+
+  useEffect(()=>{
+    getAnalytic()
+  },[])
+
   return (
-      <>
-         <Cards/>
-         
-      </>
+    <>
+      <Cards cardData={cardData}/>
+
+    </>
   )
 }
 
