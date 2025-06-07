@@ -75,7 +75,7 @@ const FooterSection2 = ({ style, logo }) => {
                     <h3>Contact Information</h3>
                     {/* <p>Address: 123 Hindustan Road, New Delhi, India</p> */}
                     <p>
-                      <span> Phone: +91 9876543210</span>
+                      
                       <span>Email: info@hcse.org.in</span>
                     </p>
                     <p>

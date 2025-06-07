@@ -22,6 +22,9 @@ const page = () => {
      setCardData(data)
     } catch (error) {
       console.log("Error fetching analytic",error)
+      localStorage.removeItem("token");
+      router.push("/login");
+       
     }
   }
 
