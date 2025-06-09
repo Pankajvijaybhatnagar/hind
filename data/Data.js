@@ -591,7 +591,7 @@ const courseDataArray = [
     price: "$49.00",
     instructor: "TBD",
     lessons: "20 lessons",
-    duration: "3 months",
+    duration: "6 months",
     description: "Learn: Speaking fluently, vocabulary building, listening skills, interactive activities",
     rating: 4,
     students: "40+ students",
