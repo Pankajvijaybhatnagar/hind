@@ -77,7 +77,7 @@ const TermSection = () => {
               <h3>11. Governing Law</h3>
               <ul>
                 <li>These Terms are governed by Indian law.</li>
-                <li>Jurisdiction: Courts of Patna, Bihar.</li>
+                <li>Jurisdiction: Courts of Patna, Chandigarh.</li>
               </ul>
 
               <h3>12. Contact Us</h3>
@@ -106,7 +106,7 @@ const TermSection = () => {
 
               <h3>16. Governing Law and Jurisdiction</h3>
               <p>
-                These terms shall be governed in accordance with Indian laws and under the jurisdiction of courts in Patna, Bihar.
+                These terms shall be governed in accordance with Indian laws and under the jurisdiction of courts in Patna, Chandigarh.
               </p>
 
               <h3>17. Modification of Terms</h3>
