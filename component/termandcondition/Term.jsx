@@ -77,7 +77,7 @@ const TermSection = () => {
               <h3>11. Governing Law</h3>
               <ul>
                 <li>These Terms are governed by Indian law.</li>
-                <li>Jurisdiction: Courts of Patna, Chandigarh.</li>
+                <li>Jurisdiction: Courts of Chandigarh, Haryana.</li>
               </ul>
 
               <h3>12. Contact Us</h3>
@@ -128,3 +128,4 @@ const TermSection = () => {
 };
 
 export default TermSection;
+
